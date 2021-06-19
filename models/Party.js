@@ -25,6 +25,6 @@ Party.init(
         underscored: true,
         modelName: 'party'
     }    
-
-
 );
+
+module.exports = Party;
