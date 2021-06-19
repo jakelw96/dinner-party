@@ -49,6 +49,17 @@ router.get('/:id', (req,res) => {
 //Create a party
 router.post('/', (req,res) => {
     Party.create({
-
+        part_name: req.body.party_name
     })
-})
+    .then(dbPartyData => {
+      if (!dbPartyName) {
+            res.status(404).json({message: "This party name already exists!"});
+            return;
+        }
+        res.json(dbPartyData)
+    })        
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
