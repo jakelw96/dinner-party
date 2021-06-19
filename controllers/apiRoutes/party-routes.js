@@ -88,3 +88,23 @@ router.put('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+//Delete a party
+router.delete('/:id', (req,res) => {
+    Party.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbPartyData => {
+        if (!dbPartyData) {
+            res.status(404).json({message: 'No party found with this id'});
+            return;
+        }
+        res.json(dbPartyData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});    
