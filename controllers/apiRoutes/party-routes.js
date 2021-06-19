@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: Party,
-                attributes: ['title']
+                attributes: ['party_name']
             }
         ]
     })
@@ -29,7 +29,7 @@ router.get('/:id', (req,res) => {
         include: [
             {
                 model: Party,
-                attributes: ['title']
+                attributes: ['party_name']
             }
         ]
     })
@@ -45,3 +45,10 @@ router.get('/:id', (req,res) => {
         res.status(500).json(err);
     });
 });
+
+//Create a party
+router.post('/', (req,res) => {
+    Party.create({
+
+    })
+})
