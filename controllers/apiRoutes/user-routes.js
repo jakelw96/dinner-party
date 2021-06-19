@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Bio } = require('../../models');
 
 // Get all users
 router.get('/', (req, res) => {
@@ -20,7 +20,12 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        // include: [] // This is where we will associate with the other models
+        include: [      // This is where we will associate with the other models
+            {
+                model: Bio,
+                attributes: ['id', 'bio_text']
+            }
+        ] 
     })
     .then(dbUserData => {
         if (!dbUserData) {
