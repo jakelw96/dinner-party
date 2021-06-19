@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Party, User} = require('../../models');
-const Comment = require('../../models/Comment');
+
 
 
 //Get all comments

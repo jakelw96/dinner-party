@@ -49,7 +49,7 @@ router.get('/:id', (req,res) => {
 //Create a party
 router.post('/', (req,res) => {
     Party.create({
-        part_name: req.body.party_name
+        party_name: req.body.party_name
     })
     .then(dbPartyData => {
       if (!dbPartyName) {
