@@ -4,7 +4,7 @@ const { Party, Comment, Post} = require('../../models');
 //Get all parties
 router.get('/', (req, res) => {
     Party.findAll({
-        attributes: ['id', 'title'],
+        attributes: ['id', 'party_name'],
         include: [
             {
                 model: Party,
@@ -25,7 +25,7 @@ router.get('/:id', (req,res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'title'],
+        attributes: ['id', 'party_name'],
         include: [
             {
                 model: Party,
