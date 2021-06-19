@@ -35,7 +35,7 @@ router.get('/:id', (req,res) => {
     })
     .then(dbPartyData => {
         if (!dbPartyData) {
-            res.status(404).json({message: 'No party found with this title'});
+            res.status(404).json({message: 'No party found with this id'});
             return;
         }
         res.json(dbPartyData)
@@ -58,6 +58,31 @@ router.post('/', (req,res) => {
         }
         res.json(dbPartyData)
     })        
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//Update a party
+router.put('/:id', (req, res) => {
+    Party.update(
+        {
+            party_name: req.body.party_name
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbPartyData => {
+        if (!dbPartyData) {
+            res.status(404).json({message: 'No party found with this id'});
+            return;
+        }
+        res.json(dbPartyData)
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
