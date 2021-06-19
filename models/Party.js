@@ -11,7 +11,7 @@ Party.init(
             allowNull: false,
             autoIncrement: true
         },
-        title: {
+        party_name: {
             type: DataTypes.STRING,
             allowNull: false,
 
