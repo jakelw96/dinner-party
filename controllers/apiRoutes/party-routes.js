@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
         attributes: ['id', 'party_name'],
         include: [
             {
-                // model: Party,
-                // attributes: ['party_name']
+                model: Party,
+                attributes: ['party_name']
             }
         ]
     })
@@ -28,8 +28,8 @@ router.get('/:id', (req,res) => {
         attributes: ['id', 'party_name'],
         include: [
             {
-                // model: Party,
-                // attributes: ['party_name']
+                model: Party,
+                attributes: ['party_name']
             }
         ]
     })
