@@ -90,17 +90,16 @@ router.delete('/:id', (req,res) => {
             id: req.params.id
         }
     })
-    //Should we do an alert here to ask if sure they want to delete comment??//
-    // .then(dbPartyData => {
-    //     if (!dbPartyData) {
-    //         res.status(404).json({message: 'No party found with this id'});
-    //         return;
-    //     }
-    //     res.json(dbPartyData)
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    //     res.status(500).json(err);
+    .then(dbPartyData => {
+        if (!dbPartyData) {
+            res.status(404).json;
+            return;
+        }
+        res.json(dbPartyData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });    
 
