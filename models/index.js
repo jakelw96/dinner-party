@@ -1,6 +1,8 @@
 const User = require('./User');
 const Bio = require('./Bio');
 const Party = require('./Party');
+const Post = require('./Post');
+const Comment = require('./Comment')
 // Other models will require here
 
 // This is where we will associate the different models
@@ -20,4 +22,39 @@ Party.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { User, Bio, Party };
+User.hasMany(Post, {
+    foreignKey: 'user_id'
+});
+
+Party.hasMany(Post, {
+    foreignKey: 'party_id'
+});
+
+Post.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Post.belongsTo(Party, {
+    foreignKey: 'post_id'
+});
+
+Comment.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Comment.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+
+User.hasMany(Comment, {
+    foreignKey: 'user_id'
+});
+
+Post.hasMany(Comment, {
+    foreignKey: 'post_id'
+});
+
+
+
+
+module.exports = { User, Bio, Party, Post, Comment };

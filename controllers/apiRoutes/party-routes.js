@@ -28,6 +28,20 @@ router.get('/:id', (req,res) => {
         attributes: ['id', 'party_name', 'user_id'],
         include: [
             {
+                model: Post,
+                attributes: ['id', 'post_name', 'post_text', 'user_id', 'party_id'],
+                include: [
+                    {
+                        model: Comment,
+                        attributes: ['id', 'comment_text', 'user_id', 'post_id']
+                    },
+                    {
+                        model: User,
+                        attributes: ['username']
+                    }
+                ]
+            },
+            {
                 model: User,
                 attributes: ['username']
             }

@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Party extends Model{}
+class Post extends Model{}
 
-Party.init(
+Post.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,27 +11,36 @@ Party.init(
             allowNull: false,
             autoIncrement: true
         },
-        party_name: {
+        post_name: {
             type: DataTypes.STRING,
             allowNull: false,
-
+        },
+        post_text: {
+            type: DataTypes.TEXT,
+             allowNull: false
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
-                model: 'user',
+                 model: 'user',
+                 key: 'id'
+            }
+        },
+        party_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'party',
                 key: 'id'
             }
         }
     },
-    {
+    {    
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'party'
+        modelName: 'post'
     }    
 );
 
-module.exports = Party;
+module.exports = Post;

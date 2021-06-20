@@ -1,19 +1,20 @@
 const router = require('express').Router();
-const { Party, User} = require('../../models');
-const Comment = require('../../models/Comment');
-
-
-
+const { Post, User, Comment} = require('../../models');
 
 //Get all comments
 router.get('/', (req,res) => {
     Comment.findAll({
-        attributes: ['id', 'comment_text', 'user_id'],
+        attributes: ['id', 'comment_text', 'user_id', 'post_id'],
         include: [
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Post,
+                attributes: ['post_name', 'post_text']
             }
+
         ]
 
     })
@@ -35,6 +36,10 @@ router.get('/:id', (req,res) => {
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Post,
+                attributes: ['post_name', 'post_text']
             }
         ]
     })
@@ -62,7 +67,9 @@ router.post('/', (req,res) => {
 router.put('/:id', (req,res) => {
     Comment.update(
         {
-            comment_text: req.body.comment_text
+            comment_text: req.body.comment_text,
+            user_id: req.body.user_id, // To be session later
+            post_id: req.body.post_id
         },
         {
             where: {
@@ -90,17 +97,16 @@ router.delete('/:id', (req,res) => {
             id: req.params.id
         }
     })
-    //Should we do an alert here to ask if sure they want to delete comment??//
-    // .then(dbPartyData => {
-    //     if (!dbPartyData) {
-    //         res.status(404).json({message: 'No party found with this id'});
-    //         return;
-    //     }
-    //     res.json(dbPartyData)
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    //     res.status(500).json(err);
+    .then(dbCommentData => {
+        if (!dbCommentData) {
+            res.status(404).json;
+            return;
+        }
+        res.json(dbCommentData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });    
 
