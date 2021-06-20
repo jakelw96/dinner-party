@@ -41,12 +41,30 @@ router.get('/:id', (req, res) => {
         ]
     })
     .then(dbPostData => {
-        if (!dbBioData) {
+        if (!dbPostData) {
             res.status(404).json({ message: 'No post found with this id' });
             return;
         }
-        res.json(dbBioData)
+        res.json(dbPostData)
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//Create a post
+router.post('/', (req,res) => {
+    Post.create({
+        post_name: req.body.post_name
+    })
+    .then(dbPostData => {
+      if (!dbPartyName) {
+            res.status(404).json({message: "This post name already exists!"});
+            return;
+        }
+        res.json(dbPostData)
+    })        
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
