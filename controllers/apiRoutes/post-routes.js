@@ -29,17 +29,20 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'post_text', 'user_id'],
         include: [
             {
-               // model: User, 
-               // attributes: ['username']
+               model: Party, 
+               attributes: ['party_name']
+            },
+            {
+                model: User,
+                attributes: ['username']
             }
         ]
     })
     .then(dbPostData => {
         if (!dbBioData) {
-            res.status(404).json({ message: 'No bio found with this id' });
+            res.status(404).json({ message: 'No post found with this id' });
             return;
         }
         res.json(dbBioData)
