@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { Party, Comment, Post} = require('../../models');
+const { User, Party, Comment, Post} = require('../../models');
 
 //Get all parties
 router.get('/', (req, res) => {
     Party.findAll({
-        attributes: ['id', 'party_name'],
+        attributes: ['id', 'party_name', 'user_id'],
         include: [
             {
-                // model: Party,
-                // attributes: ['party_name']
+                model: User,
+                attributes: ['username']
             }
         ]
     })
@@ -25,11 +25,11 @@ router.get('/:id', (req,res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'party_name'],
+        attributes: ['id', 'party_name', 'user_id'],
         include: [
             {
-                // model: Party,
-                // attributes: ['party_name']
+                model: User,
+                attributes: ['username']
             }
         ]
     })
@@ -49,10 +49,11 @@ router.get('/:id', (req,res) => {
 //Create a party
 router.post('/', (req,res) => {
     Party.create({
-        party_name: req.body.party_name
+        party_name: req.body.party_name,
+        user_id: req.body.user_id    // Will be session data later
     })
     .then(dbPartyData => {
-      if (!dbPartyName) {
+      if (!dbPartyData) {
             res.status(404).json({message: "This party name already exists!"});
             return;
         }

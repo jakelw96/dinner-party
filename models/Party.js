@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Bio extends Model{}
+class Party extends Model{}
 
 Party.init(
     {
@@ -15,9 +15,15 @@ Party.init(
             type: DataTypes.STRING,
             allowNull: false,
 
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         }
-    
-
     },
     {
         sequelize,
