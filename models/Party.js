@@ -14,8 +14,7 @@ Party.init(
         party_name: {
             type: DataTypes.STRING,
             allowNull: false,
-
-        }
+         }
     
 
     },

@@ -11,6 +11,10 @@ Post.init(
             allowNull: false,
             autoIncrement: true
         },
+        post_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         post_text: {
             type: DataTypes.TEXT,
              allowNull: false
