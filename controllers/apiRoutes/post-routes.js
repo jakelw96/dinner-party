@@ -59,12 +59,37 @@ router.post('/', (req,res) => {
         post_name: req.body.post_name
     })
     .then(dbPostData => {
-      if (!dbPartyName) {
+      if (!dbPostName) {
             res.status(404).json({message: "This post name already exists!"});
             return;
         }
         res.json(dbPostData)
     })        
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//Update a post
+router.put('/:id', (req, res) => {
+    Post.update(
+        {
+            post_name: req.body.post_name
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbPostData => {
+        if (!dbPostData) {
+            res.status(404).json({message: 'No post found with this id'});
+            return;
+        }
+        res.json(dbPostData)
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
