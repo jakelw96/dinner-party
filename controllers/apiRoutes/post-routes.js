@@ -95,3 +95,24 @@ router.put('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+//Delete a post
+router.delete('/:id', (req,res) => {
+    Post.destroy({
+        where: {
+            id: req.params.id
+            //should i put include party name the post is associated with here?
+        }
+    })
+    .then(dbPostData => {
+        if (!dbPostData) {
+            res.status(404).json({message: 'No post found with this id'});
+            return;
+        }
+        res.json(dbPostData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});    
