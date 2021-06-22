@@ -3,6 +3,8 @@ const Bio = require('./Bio');
 const Party = require('./Party');
 const Post = require('./Post');
 const Comment = require('./Comment')
+const Interest = require('./Interest');
+
 // Other models will require here
 
 // This is where we will associate the different models
@@ -54,7 +56,5 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 });
 
-
-
-
 module.exports = { User, Bio, Party, Post, Comment };
+
