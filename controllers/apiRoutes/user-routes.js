@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { User, Bio, Party } = require('../../models');
+const { User, Bio, Party, Interest, UserInterests } = require('../../models');
 
 // Get all users
 router.get('/', (req, res) => {
     User.findAll({
-        attributes: { exclude: ['password']}
+        attributes: { exclude: ['password']},
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -28,6 +28,10 @@ router.get('/:id', (req, res) => {
             {
                 model: Party,
                 attributes: ['id', 'party_name']
+            },
+            {
+                model: Interest,
+                attributes: ['id', 'interest_name']
             }
         ] 
     })
@@ -46,9 +50,23 @@ router.get('/:id', (req, res) => {
 
 // Creates a new user
 router.post('/', (req, res) => {
-    User.create({
+    User.create(req.body, {
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        interestIds: req.body.interestIds
+    })
+    .then((user) => {
+        if (req.body.interestIds.length) {
+            const interestsTagsArr = req.body.interestIds.map((interest_id) => {
+                return {
+                   user_id: user.id,
+                   interest_id,
+                };
+            });
+            return UserInterests.bulkCreate(interestsTagsArr)
+        }
+        // If no interests
+        res.status(200).json(user)
     })
     .then(dbUserData => {
         // Session saving data will go here
