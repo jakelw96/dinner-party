@@ -5,6 +5,7 @@
      <!--Importing custom fonts-->
      <link rel="preconnect" href="https://fonts.gstatic.com">
      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css" integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" />
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,17 @@
     <title>Dinner Party</title>
 </head>
 <body>
-  
+<main class="flex-col flex-row">
+  <nav class = "nav-constant">
+    <div class="grid justify-items-center">
+      <div class="pt-5 pb-0">
+        <a href="#" class="logo inline">dinner party</a>
+        <img class="inline pb-7 pl-5" src="/public/assets/chair-icon.png"/>
+      </div class="mb-4">
+      <button class="button-1 inline text-white px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="login-btn">Login</button>
+    </div>
+  </nav>
+</main>
     <link rel="stylesheet" href="/public/css/style.css"/>
 </body>
 </html>

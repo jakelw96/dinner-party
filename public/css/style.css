@@ -1,3 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
 :root {
     --logo: #6CBAAB;
     --h1: #FEA202;
@@ -7,7 +13,7 @@
 .logo {
     font-family: 'Great Vibes', cursive;
     color: var(--logo) !important;
-    font-size: 70px !important;
+    font-size: 80px !important;
 }
 
 .nav-constant {
@@ -17,3 +23,4 @@
 .button-1 {
     background-color: var(--button1-color);
 }
+
