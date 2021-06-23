@@ -1,0 +1,19 @@
+:root {
+    --logo: #6CBAAB;
+    --h1: #FEA202;
+    --background-lite: #F7F5F5;
+    --button1-color: #6D648B;
+}
+.logo {
+    font-family: 'Great Vibes', cursive;
+    color: var(--logo) !important;
+    font-size: 70px !important;
+}
+
+.nav-constant {
+    background-color: var(--background-lite);
+}
+
+.button-1 {
+    background-color: var(--button1-color);
+}
