@@ -5,10 +5,16 @@ const Post = require('./Post');
 const Comment = require('./Comment')
 const Interest = require('./Interest');
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 const UserInterests = require('./UserInterests');
 const PartyInterests = require('./PartyInterests');
 >>>>>>> interests-model-edit
+=======
+const UserInterests = require('./UserInterests');
+const PartyInterests = require('./PartyInterests');
+
+>>>>>>> 7d7fa0f489afb9fd734c4a3c60bd5b572b2828a0
 
 // Other models will require here
 
@@ -63,12 +69,15 @@ Post.hasMany(Comment, {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 module.exports = { User, Bio, Party, Post, Comment };
 =======
 module.exports = { User, Bio, Party, Post, Comment };
 
 >>>>>>> aa0bb27eabd5c76c7ef40fac7d896a2be6b64382
 =======
+=======
+>>>>>>> 7d7fa0f489afb9fd734c4a3c60bd5b572b2828a0
 User.belongsToMany(Interest, {
     through: UserInterests,
     foreignKey: 'user_id'
@@ -79,17 +88,15 @@ Interest.belongsToMany(User, {
     foreignKey: 'interest_id'
 });
 
-Interest.belongsToMany(Party, {
-    through: PartyInterests,
-    foreignKey: 'interest_id'
-});
-
 Party.belongsToMany(Interest, {
     through: PartyInterests,
     foreignKey: 'party_id'
 });
 
-
+Interest.belongsToMany(Party, {
+    through: PartyInterests,
+    foreignKey: 'interest_id'
+});
 
 module.exports = { 
     User, 
@@ -100,5 +107,9 @@ module.exports = {
     Interest, 
     UserInterests, 
     PartyInterests 
+<<<<<<< HEAD
 };
 >>>>>>> interests-model-edit
+=======
+};
+>>>>>>> 7d7fa0f489afb9fd734c4a3c60bd5b572b2828a0

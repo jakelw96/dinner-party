@@ -26,10 +26,13 @@ Interest.init(
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
 
 =======
 >>>>>>> interests-model-edit
+=======
+>>>>>>> 7d7fa0f489afb9fd734c4a3c60bd5b572b2828a0
 module.exports = Interest; 
