@@ -11,18 +11,14 @@ PartyInterests.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        interest_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         party_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'party',
                 key: 'id'
             }
         },
-        interests_id: {
+        interest_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'interest',
@@ -35,7 +31,7 @@ PartyInterests.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user_interests'
+        modelName: 'party_interests'
     }
 );
 
