@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "postcss public/css/style.css -o build/styles.css"
+    "build": "postcss public/css/style.css -o build/styles.css",
+    "seed": "node seeds/index.js"
+
   },
   "keywords": [],
   "author": "",

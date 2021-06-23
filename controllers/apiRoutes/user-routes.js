@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { User, Bio, Party } = require('../../models');
+const { User, Bio, Party, Interest, UserInterests } = require('../../models');
 
 // Get all users
 router.get('/', (req, res) => {
     User.findAll({
-        attributes: { exclude: ['password']}
+        attributes: { exclude: ['password']},
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -28,7 +28,11 @@ router.get('/:id', (req, res) => {
             {
                 model: Party,
                 attributes: ['id', 'party_name']
-            }
+            },
+            // {
+            //     model: Interest,
+            //     attributes: ['id', 'interest_name']
+            // }
         ] 
     })
     .then(dbUserData => {
@@ -48,7 +52,21 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        interestIds: req.body.interestIds
+    })
+    .then((user) => {
+        if (req.body.interestIds.length) {
+            const interestsTagsArr = req.body.interestIds.map((interest_id) => {
+                return {
+                   user_id: user.id,
+                   interest_id
+                };
+            })
+            return UserInterests.bulkCreate(interestsTagsArr)
+        }
+        // If no interests
+        res.status(200).json(user)
     })
     .then(dbUserData => {
         // Session saving data will go here
@@ -60,6 +78,44 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+// Updates the user to add in interests
+// router.put('/:id', (req, res) => {
+//     const userID = parseInt(req.params.id, 10);
+//     console.log(userID);
+//     User.update(
+//         {
+//             interestIds: req.body.interestIds
+//         },
+//         {
+//             where: {
+//                 id: req.params.id
+//             }
+//         }
+//     )
+//     .then((user) => {
+//         if (req.body.interestIds.length) {
+//             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
+//                 return {
+//                    user_id: userID,
+//                    interest_id
+//                 };
+//             })
+//             return UserInterests.bulkCreate(interestsTagsArr)
+//         }
+//         // If no interests
+//         res.status(200).json(user)
+//     })
+//     .then(dbUserData => {
+//         // Session saving data will go here
+        
+//         res.json(dbUserData)
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 // Login 
 router.post('/login', (req, res) => {
