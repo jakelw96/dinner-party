@@ -7,6 +7,7 @@ const Interest = require('./Interest');
 const UserInterests = require('./UserInterests');
 const PartyInterests = require('./PartyInterests');
 
+
 // Other models will require here
 
 // This is where we will associate the different models
@@ -68,17 +69,15 @@ Interest.belongsToMany(User, {
     foreignKey: 'interest_id'
 });
 
-Interest.belongsToMany(Party, {
-    through: PartyInterests,
-    foreignKey: 'interest_id'
-});
-
 Party.belongsToMany(Interest, {
     through: PartyInterests,
     foreignKey: 'party_id'
 });
 
-
+Interest.belongsToMany(Party, {
+    through: PartyInterests,
+    foreignKey: 'interest_id'
+});
 
 module.exports = { 
     User, 
