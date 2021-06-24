@@ -5,8 +5,10 @@ const Post = require('./Post');
 const Comment = require('./Comment')
 const Interest = require('./Interest');
 
+
 const UserInterests = require('./UserInterests');
 const PartyInterests = require('./PartyInterests');
+
 
 
 // Other models will require here
@@ -95,4 +97,6 @@ module.exports = {
     PartyInterests 
 
 };
+
+
 
