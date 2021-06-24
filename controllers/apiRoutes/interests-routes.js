@@ -6,10 +6,10 @@ router.get('/', (req, res) => {
     Interest.findAll({
         attributes: ['interest_name'],
         include: [
-            // {
-            //     model: User,
-            //     attributes: ['username']
-            // },
+            {
+                model: User,
+                attributes: ['username']
+            },
             {
                 model: Party,
                 attributes: ['party_name']
@@ -31,10 +31,10 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         include: [
-            // {
-            //     model: User,
-            //     attributes: ['username']
-            // },
+            {
+                model: User,
+                attributes: ['username']
+            },
             {
                 model: Party,
                 attributes: ['party_name']
