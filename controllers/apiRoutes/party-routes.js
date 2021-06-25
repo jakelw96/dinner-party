@@ -102,6 +102,7 @@ router.post('/', isAuthenticate, (req,res) => {
     });
 });
 
+
 //Update a party
 router.put('/:id', isAuthenticate, (req, res) => {
     Party.update(
@@ -118,9 +119,42 @@ router.put('/:id', isAuthenticate, (req, res) => {
         if (!dbPartyData) {
             res.status(404).json({message: 'No party found with this id'});
             return;
+=======
+// Update a party's name and interests
+router.put('/:id', (req, res) => {
+    Party.update(req.body, {
+        where: {
+            id: req.params.id
         }
-        res.json(dbPartyData)
     })
+    .then((party) => {
+        // Find all associated interests
+        return PartyInterests.findAll({ where: { party_id: req.params.id } })
+    })
+    .then((partyInterests) => {
+    // Get current interest ids
+    const interests = partyInterests.map(({ interest_id }) => interest_id);
+    // Filter list of new ids
+    const newInterests = req.body.interestIds
+        .filter((interest_id) => !interests.includes(interest_id))
+        .map((interest_id) => {
+            return {
+                party_id: req.params.id,
+                interest_id
+            };
+        });
+        // Figures out which interests to remove
+        const interestsToRemove = partyInterests
+            .filter(({ interest_id }) => !req.body.interestIds.includes(interest_id))
+            .map(({ id }) => id);
+
+        // Delete tags to remove and create the new tags for party
+        return Promise.all([
+            PartyInterests.destroy({where: { id: interestsToRemove } }),
+            PartyInterests.bulkCreate(newInterests)
+        ]);
+    })
+    .then((updatedInterests) => res.json(updatedInterests))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
