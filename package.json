@@ -6,17 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "build": "postcss public/css/style.css -o build/styles.css"
-=======
     "build": "postcss public/css/style.css -o build/styles.css",
     "seed": "node seeds/index.js"
->>>>>>> interests-model-edit
-=======
-    "build": "postcss public/css/style.css -o build/styles.css",
-    "seed": "node seeds/index.js"
->>>>>>> 7d7fa0f489afb9fd734c4a3c60bd5b572b2828a0
   },
   "keywords": [],
   "author": "",
