@@ -5,6 +5,10 @@
      <!--Importing custom fonts-->
      <link rel="preconnect" href="https://fonts.gstatic.com">
      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+     <!--Tailwind CDN-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css" integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" />
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +16,31 @@
     <title>Dinner Party</title>
 </head>
 <body>
-  
+<main class="flex-col flex-row">
+
+  <!--Login page nav (homepage)-->
+  <nav class = "nav-constant">
+    <div class="grid justify-items-center">
+      <div class="pt-5 pb-0">
+        <a href="#" class="logo inline">dinner party</a>
+        <img class="inline pb-7 pl-5" src="/public/assets/chair-icon.png"/>
+      </div class="mb-4">
+      <button class="button-main inline text-white px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="login-btn">login</button>
+    </div>
+  </nav>
+
+  <!--HERO-->
+  <div class="hero">
+    <img src="/public/assets/hero-image.jpg" alt="group of people enjoying an outdoor dinner party" class="opacity-75">
+    <div class="h1 hero-text pt-8 px-10 bg-gray-100 w-9/12 h-1/2 opacity-90 text-2xl rounded-lg">A place to talk about the things you like, and find more things to love.</div>
+  </div>
+
+  <!--Sign up form-->
+ <div class="sign-up">
+<div class="h2 m-5 text-3xl grid justify-items-center">Join the conversation</div>
+ </div>
+
+</main>
     <link rel="stylesheet" href="/public/css/style.css"/>
 </body>
 </html>
