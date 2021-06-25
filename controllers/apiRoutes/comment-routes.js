@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { Post, User, Comment} = require('../../models');
+const isAuthenticate = require('../../utils/authenticate');
 
 //Get all comments
-router.get('/', (req,res) => {
+router.get('/', isAuthenticate, (req,res) => {
     Comment.findAll({
         attributes: ['id', 'comment_text', 'user_id', 'post_id'],
         include: [
@@ -26,7 +27,7 @@ router.get('/', (req,res) => {
 });
 
 //Get a single comment
-router.get('/:id', (req,res) => {
+router.get('/:id', isAuthenticate, (req,res) => {
     Comment.findOne({
         where: {
             id: req.params.id
@@ -51,7 +52,7 @@ router.get('/:id', (req,res) => {
 });
 
 //Create a comment
-router.post('/', (req, res) => {
+router.post('/', isAuthenticate, (req, res) => {
     Comment.create({
         comment_text: req.body.comment_text,
         user_id: req.body.user_id, // Will be session data 
@@ -65,7 +66,7 @@ router.post('/', (req, res) => {
 });
 
 //Update a comment
-router.put('/:id', (req,res) => {
+router.put('/:id', isAuthenticate, (req,res) => {
     Comment.update(
         {
             comment_text: req.body.comment_text,
@@ -92,7 +93,7 @@ router.put('/:id', (req,res) => {
 });
 
 //Delete a comment
-router.delete('/:id', (req,res) => {
+router.delete('/:id', isAuthenticate, (req,res) => {
     Comment.destroy({
         where: {
             id: req.params.id

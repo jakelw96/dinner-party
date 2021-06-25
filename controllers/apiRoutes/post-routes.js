@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { User, Party, Post, Comment } = require('../../models');
+const isAuthenticate = require('../../utils/authenticate');
+
 
 //Get all posts
-router.get('/', (req, res) => {
+router.get('/', isAuthenticate, (req, res) => {
     Post.findAll({
         attributes: ['id', 'post_name', 'post_text', 'user_id', 'party_id', 'created_at'],
         include: [
@@ -24,7 +26,7 @@ router.get('/', (req, res) => {
 });
 
 //Get one post
-router.get('/:id', (req, res) => {
+router.get('/:id', isAuthenticate, (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -63,7 +65,7 @@ router.get('/:id', (req, res) => {
 });
 
 //Create a post
-router.post('/', (req,res) => {
+router.post('/', isAuthenticate, (req,res) => {
     Post.create({
         post_name: req.body.post_name,
         post_text: req.body.post_text,
@@ -84,7 +86,7 @@ router.post('/', (req,res) => {
 });
 
 //Update a post
-router.put('/:id', (req, res) => {
+router.put('/:id', isAuthenticate, (req, res) => {
     Post.update(
         {
             post_name: req.body.post_name,
@@ -110,7 +112,7 @@ router.put('/:id', (req, res) => {
 });
 
 //Delete a post
-router.delete('/:id', (req,res) => {
+router.delete('/:id', isAuthenticate, (req,res) => {
     Post.destroy({
         where: {
             id: req.params.id
