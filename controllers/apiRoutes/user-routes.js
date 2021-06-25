@@ -29,10 +29,10 @@ router.get('/:id', (req, res) => {
                 model: Party,
                 attributes: ['id', 'party_name']
             },
-            // {
-            //     model: Interest,
-            //     attributes: ['id', 'interest_name']
-            // }
+            {
+                model: Interest,
+                attributes: ['id', 'interest_name']
+            }
         ] 
     })
     .then(dbUserData => {
@@ -79,43 +79,46 @@ router.post('/', (req, res) => {
     });
 });
 
-// Updates the user to add in interests
-// router.put('/:id', (req, res) => {
-//     const userID = parseInt(req.params.id, 10);
-//     console.log(userID);
-//     User.update(
-//         {
-//             interestIds: req.body.interestIds
-//         },
-//         {
-//             where: {
-//                 id: req.params.id
-//             }
-//         }
-//     )
-//     .then((user) => {
-//         if (req.body.interestIds.length) {
-//             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
-//                 return {
-//                    user_id: userID,
-//                    interest_id
-//                 };
-//             })
-//             return UserInterests.bulkCreate(interestsTagsArr)
-//         }
-//         // If no interests
-//         res.status(200).json(user)
-//     })
-//     .then(dbUserData => {
-//         // Session saving data will go here
-        
-//         res.json(dbUserData)
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//     });
-// });
+// Update users interests
+router.put('/:id', (req, res) => {
+    User.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then((user) => {
+        // Find all associated interests
+        return UserInterests.findAll({ where: { user_id: req.params.id } })
+    })
+    .then((userInterests) => {
+    // Get current interest ids
+    const interests = userInterests.map(({ interest_id }) => interest_id);
+    // Filter list of new ids
+    const newInterests = req.body.interestIds
+        .filter((interest_id) => !interests.includes(interest_id))
+        .map((interest_id) => {
+            return {
+                user_id: req.params.id,
+                interest_id
+            };
+        });
+        // Figures out which interests to remove
+        const interestsToRemove = userInterests
+            .filter(({ interest_id }) => !req.body.interestIds.includes(interest_id))
+            .map(({ id }) => id);
+
+        // Delete tags to remove and create the new tags for party
+        return Promise.all([
+            UserInterests.destroy({where: { id: interestsToRemove } }),
+            UserInterests.bulkCreate(newInterests)
+        ]);
+    })
+    .then((updatedInterests) => res.json(updatedInterests))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 // Login 
 router.post('/login', (req, res) => {
