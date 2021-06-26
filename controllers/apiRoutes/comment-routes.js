@@ -53,16 +53,18 @@ router.get('/:id', isAuthenticate, (req,res) => {
 
 //Create a comment
 router.post('/', isAuthenticate, (req, res) => {
-    Comment.create({
-        comment_text: req.body.comment_text,
-        user_id: req.body.user_id, // Will be session data 
-        post_id: req.body.post_id
-    })
-    .then(dbCommentData => res.json(dbCommentData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+    if (req.session) {
+        Comment.create({
+            comment_text: req.body.comment_text,
+            user_id: req.session.user_id, // Will be session data 
+            post_id: req.body.post_id
+        })
+        .then(dbCommentData => res.json(dbCommentData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    };
 });
 
 //Update a comment

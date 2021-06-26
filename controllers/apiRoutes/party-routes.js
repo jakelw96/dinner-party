@@ -73,7 +73,7 @@ router.get('/:id', isAuthenticate, (req,res) => {
 router.post('/', isAuthenticate, (req,res) => {
     Party.create({
         party_name: req.body.party_name,
-        user_id: req.body.user_id,    // Will be session data later
+        user_id: req.session.user_id,    // Will be session data later
         interestIds: req.body.interestIds
     })
     .then((party) => {
@@ -102,24 +102,6 @@ router.post('/', isAuthenticate, (req,res) => {
     });
 });
 
-
-//Update a party
-router.put('/:id', isAuthenticate, (req, res) => {
-    Party.update(
-        {
-            party_name: req.body.party_name
-        },
-        {
-            where: {
-                id: req.params.id
-            }
-        }
-    )
-    .then(dbPartyData => {
-        if (!dbPartyData) {
-            res.status(404).json({message: 'No party found with this id'});
-            return;
-=======
 // Update a party's name and interests
 router.put('/:id', (req, res) => {
     Party.update(req.body, {
