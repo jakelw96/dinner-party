@@ -1,4 +1,4 @@
-async function newFormHandler(event) {
+async function newPartyHandler(event) {
     event.preventDefault();
 
     //subject to change based on how html is naming elements 
@@ -30,4 +30,4 @@ async function newFormHandler(event) {
 
 //subject to change based on how html is naming elements 
   
-document.querySelector('.new-party-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-party-form').addEventListener('submit', newPartyHandler);
