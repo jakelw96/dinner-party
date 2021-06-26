@@ -1,5 +1,9 @@
 const router = require('express').Router();
 const { User, Bio, Party, Interest, UserInterests } = require('../../models');
+const isAuthenticate = require('../../utils/authenticate');
+
+//
+
 
 // Get all users
 router.get('/', (req, res) => {
@@ -126,12 +130,12 @@ router.post('/login', (req, res) => {
 });
 
 // Logout
-router.post('/logout', (req, res) => {
+router.post('/logout', isAuthenticate, (req, res) => {
     // To be completed
 });
 
 // Delete a user
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isAuthenticate, (req, res) => {
     User.destroy({
         where: {
             id: req.params.id

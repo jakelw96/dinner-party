@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Interest, Party, User } = require('../../models');
+const isAuthenticate = require('../../utils/authenticate');
+
 
 // Get all interests
 router.get('/', (req, res) => {
@@ -55,7 +57,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create a new interest
-router.post('/', (req, res) => {
+router.post('/', isAuthenticate, (req, res) => {
     Interest.create({
         interest_name: req.body.interest_name
     })
@@ -67,7 +69,7 @@ router.post('/', (req, res) => {
 });
 
 // Delete an interest
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isAuthenticate, (req, res) => {
     Interest.destroy({
         where: {
             id: req.params.id

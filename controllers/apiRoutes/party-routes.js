@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User, Party, Comment, Post, PartyInterests, Interest} = require('../../models');
+const isAuthenticate = require('../../utils/authenticate');
 
 //Get all parties
-router.get('/', (req, res) => {
+router.get('/', isAuthenticate, (req, res) => {
     Party.findAll({
         attributes: ['id', 'party_name', 'user_id'],
         include: [
@@ -24,7 +25,7 @@ router.get('/', (req, res) => {
 });
 
 //Get a single party
-router.get('/:id', (req,res) => {
+router.get('/:id', isAuthenticate, (req,res) => {
     Party.findOne({
         where: {
             id: req.params.id
@@ -69,7 +70,7 @@ router.get('/:id', (req,res) => {
 });
 
 //Create a party
-router.post('/', (req,res) => {
+router.post('/', isAuthenticate, (req,res) => {
     Party.create({
         party_name: req.body.party_name,
         user_id: req.body.user_id,    // Will be session data later
@@ -101,6 +102,24 @@ router.post('/', (req,res) => {
     });
 });
 
+
+//Update a party
+router.put('/:id', isAuthenticate, (req, res) => {
+    Party.update(
+        {
+            party_name: req.body.party_name
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbPartyData => {
+        if (!dbPartyData) {
+            res.status(404).json({message: 'No party found with this id'});
+            return;
+=======
 // Update a party's name and interests
 router.put('/:id', (req, res) => {
     Party.update(req.body, {
@@ -143,7 +162,7 @@ router.put('/:id', (req, res) => {
 });
 
 //Delete a party
-router.delete('/:id', (req,res) => {
+router.delete('/:id', isAuthenticate, (req,res) => {
     Party.destroy({
         where: {
             id: req.params.id

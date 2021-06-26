@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { User, Bio } = require('../../models');
+const isAuthenticate = require('../../utils/authenticate');
+
 
 // Get all bios
-router.get('/', (req, res) => {
+router.get('/', isAuthenticate, (req, res) => {
     Bio.findAll({
         attributes: ['id', 'bio_text', 'user_id'],
         include: [
@@ -20,7 +22,7 @@ router.get('/', (req, res) => {
 });
 
 // Get a single bio
-router.get('/:id', (req, res) => {
+router.get('/:id', isAuthenticate, (req, res) => {
     Bio.findOne({
         where: {
             id: req.params.id
@@ -47,7 +49,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create a bio
-router.post('/', (req, res) => {
+router.post('/', isAuthenticate, (req, res) => {
     Bio.create({
         bio_text: req.body.bio_text,
         user_id: req.body.user_id  // To be updated to reflect session instead
@@ -60,7 +62,7 @@ router.post('/', (req, res) => {
 });
 
 // Update bio
-router.put('/:id', (req, res) => {
+router.put('/:id', isAuthenticate, (req, res) => {
     Bio.update(
         {
             bio_text: req.body.bio_text
