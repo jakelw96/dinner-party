@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class UserParties extends Model{}
 
-UserParties.init({
+UserParties.init(
     {
         id: {
             type: DataTypes.INTEGER,
