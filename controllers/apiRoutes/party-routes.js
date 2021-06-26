@@ -3,7 +3,7 @@ const { User, Party, Comment, Post, PartyInterests, Interest} = require('../../m
 const isAuthenticate = require('../../utils/authenticate');
 
 //Get all parties
-router.get('/', isAuthenticate, (req, res) => {
+router.get('/', (req, res) => {
     Party.findAll({
         attributes: ['id', 'party_name', 'user_id'],
         include: [
@@ -25,7 +25,7 @@ router.get('/', isAuthenticate, (req, res) => {
 });
 
 //Get a single party
-router.get('/:id', isAuthenticate, (req,res) => {
+router.get('/:id', (req,res) => {
     Party.findOne({
         where: {
             id: req.params.id
