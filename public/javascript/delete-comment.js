@@ -1,11 +1,11 @@
-async function deletePostHandler(event) {
+async function deleteCommentHandler(event) {
     event.preventDefault();
 
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
     
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/comments/${id}`, {
         method: 'DELETE'
     });
         
@@ -17,4 +17,4 @@ async function deletePostHandler(event) {
   
 }
   
-document.querySelector('.delete-post-btn').addEventListener('click', deletePostHandler);
+document.querySelector('.delete-comment-btn').addEventListener('click', deleteCommentHandler);
