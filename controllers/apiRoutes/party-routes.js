@@ -81,10 +81,11 @@ router.post('/', isAuthenticate, (req,res) => {
             const userIdArr = req.body.interestIds.map((interest_id) => {
                 return {
                    party_id: party.id,
-                   interest_id
+                   interest_id,
+                   user_id
                 };
             })
-            return PartyUsers.bulkCreate(userIdArr)
+            return UserParties.bulkCreate(userIdArr)
         }
         // If no interests
         res.status(200).json(party)
