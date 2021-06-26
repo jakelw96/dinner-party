@@ -23,5 +23,9 @@ async function newFormHandler(event) {
       alert(response.statusText);
     }
 }
+
+
+
+//subject to change based on how html is naming elements 
   
 document.querySelector('.new-party-form').addEventListener('submit', newFormHandler);
