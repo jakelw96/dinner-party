@@ -119,7 +119,16 @@ router.put('/:id', isAuthenticate, (req, res) => {
         if (!dbPartyData) {
             res.status(404).json({message: 'No party found with this id'});
             return;
-            
+        }
+        res.json(dbPartyData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+    
 // Update a party's name and interests
 router.put('/:id', (req, res) => {
     Party.update(req.body, {
