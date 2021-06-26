@@ -3,7 +3,7 @@ const { User, Party, Comment, Post, PartyInterests, Interest} = require('../../m
 const isAuthenticate = require('../../utils/authenticate');
 
 //Get all parties
-router.get('/', isAuthenticate, (req, res) => {
+router.get('/', (req, res) => {
     Party.findAll({
         attributes: ['id', 'party_name', 'user_id'],
         include: [
@@ -25,7 +25,7 @@ router.get('/', isAuthenticate, (req, res) => {
 });
 
 //Get a single party
-router.get('/:id', isAuthenticate, (req,res) => {
+router.get('/:id', (req,res) => {
     Party.findOne({
         where: {
             id: req.params.id
@@ -119,7 +119,16 @@ router.put('/:id', isAuthenticate, (req, res) => {
         if (!dbPartyData) {
             res.status(404).json({message: 'No party found with this id'});
             return;
-=======
+        }
+        res.json(dbPartyData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+    
 // Update a party's name and interests
 router.put('/:id', (req, res) => {
     Party.update(req.body, {

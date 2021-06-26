@@ -4,7 +4,7 @@ const isAuthenticate = require('../../utils/authenticate');
 
 
 //Get all posts
-router.get('/', isAuthenticate, (req, res) => {
+router.get('/', (req, res) => {
     Post.findAll({
         attributes: ['id', 'post_name', 'post_text', 'user_id', 'party_id', 'created_at'],
         include: [
@@ -26,7 +26,7 @@ router.get('/', isAuthenticate, (req, res) => {
 });
 
 //Get one post
-router.get('/:id', isAuthenticate, (req, res) => {
+router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
