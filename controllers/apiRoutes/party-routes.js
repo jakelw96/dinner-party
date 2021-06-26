@@ -78,6 +78,17 @@ router.post('/', isAuthenticate, (req,res) => {
     })
     .then((party) => {
         if (req.body.interestIds.length) {
+            const userIdArr = req.body.interestIds.map((interest_id) => {
+                return {
+                    user_id: user.id,
+                    interest_id
+                };
+            })
+            return partyUsers.bulkCreate(userIdArr)
+        }
+    })
+    .then((party) => {
+        if (req.body.interestIds.length) {
             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
                 return {
                    party_id: party.id,
