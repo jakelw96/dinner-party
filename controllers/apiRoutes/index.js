@@ -11,7 +11,7 @@ const userPartyRoutes = require('./userParty-routes');
 
 //router.use('/users', userRoutes);
 router.use('/bios', bioRoutes);
-//router.use('/parties', partyRoutes);
+router.use('/parties', partyRoutes);
 router.use('/posts', postRoutes);
 router.use('/comments', commentRoutes);
 router.use('/interests', interestRoutes);
