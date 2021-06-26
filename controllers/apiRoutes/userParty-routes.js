@@ -84,3 +84,45 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+// Update users interests
+router.put('/:id', (req, res) => {
+    User.update(req.body, {
+        individualHooks: true,
+        where: {
+            id: req.params.id
+        }
+    })
+    .then((user) => {
+        // Find all associated interests
+        return UserInterests.findAll({ where: { user_id: req.params.id } })
+    })
+    .then((userInterests) => {
+    // Get current interest ids
+    const interests = userInterests.map(({ interest_id }) => interest_id);
+    // Filter list of new ids
+    const newInterests = req.body.interestIds
+        .filter((interest_id) => !interests.includes(interest_id))
+        .map((interest_id) => {
+            return {
+                user_id: req.params.id,
+                interest_id
+            };
+        });
+        // Figures out which interests to remove
+        const interestsToRemove = userInterests
+            .filter(({ interest_id }) => !req.body.interestIds.includes(interest_id))
+            .map(({ id }) => id);
+
+        // Delete tags to remove and create the new tags for party
+        return Promise.all([
+            UserInterests.destroy({where: { id: interestsToRemove } }),
+            UserInterests.bulkCreate(newInterests)
+        ]);
+    })
+    .then((updatedInterests) => res.json(updatedInterests))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});

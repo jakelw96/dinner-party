@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Party, Comment, Post, PartyInterests, Interest} = require('../../models');
+const { User, Party, Comment, Post, PartyInterests, UserParties, Interest} = require('../../models');
 const isAuthenticate = require('../../utils/authenticate');
 
 //Get all parties
@@ -80,12 +80,14 @@ router.post('/', isAuthenticate, (req,res) => {
         if (req.body.interestIds.length) {
             const userIdArr = req.body.interestIds.map((interest_id) => {
                 return {
-                    user_id: user.id,
-                    interest_id
+                   party_id: party.id,
+                   interest_id
                 };
             })
-            return partyUsers.bulkCreate(userIdArr)
+            return PartyUsers.bulkCreate(userIdArr)
         }
+        // If no interests
+        res.status(200).json(party)
     })
     .then((party) => {
         if (req.body.interestIds.length) {

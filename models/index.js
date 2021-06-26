@@ -5,7 +5,7 @@ const Post = require('./Post');
 const Comment = require('./Comment')
 const Interest = require('./Interest');
 
-
+const UserParties = require('./UserParties');
 const UserInterests = require('./UserInterests');
 const PartyInterests = require('./PartyInterests');
 
@@ -86,6 +86,17 @@ Interest.belongsToMany(Party, {
     foreignKey: 'interest_id'
 });
 
+User.belongsToMany(Interest, {
+    through: UserParties,
+    foreignKey: 'user_id'
+});
+
+Party.belongsToMany(Interest, {
+    through: UserParties,
+    foreignKey: 'party_id'
+});
+
+
 module.exports = { 
     User, 
     Bio, 
@@ -94,7 +105,8 @@ module.exports = {
     Comment, 
     Interest, 
     UserInterests, 
-    PartyInterests 
+    PartyInterests,
+    UserParties
 
 };
 
