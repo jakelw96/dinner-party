@@ -5,6 +5,7 @@ async function newFormHandler(event) {
   
     const party_name = document.querySelector('input[name="party-name"]').value;
     const party_bio = document.querySelector('textarea[name="party-bio"]').value;
+
   
     const response = await fetch(`/api/posts`, {
       method: 'POST',
