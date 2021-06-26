@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Bio, Party, Interest, UserInterests } = require('../../models');
+const { User, Bio, Party, Interest, UserInterests} = require('../../models');
 const isAuthenticate = require('../../utils/authenticate');
 
 // Get all users
@@ -126,3 +126,6 @@ router.put('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+
+module.exports = router;
