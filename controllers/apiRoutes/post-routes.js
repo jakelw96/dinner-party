@@ -69,7 +69,7 @@ router.post('/', isAuthenticate, (req,res) => {
     Post.create({
         post_name: req.body.post_name,
         post_text: req.body.post_text,
-        user_id: req.body.user_id,  // To be session later
+        user_id: req.session.user_id,  // To be session later
         party_id: req.body.party_id
     })
     .then(dbPostData => {
