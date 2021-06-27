@@ -7,7 +7,6 @@ const seedUsers = async () => {
          username: faker.name.userName(),
          password: await bcrypt.hash('password', 10),
         };
-        user.avatar = gravatar(user.email);
         users.push(user);
        }
        return users;
