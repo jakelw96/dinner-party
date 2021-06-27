@@ -19,16 +19,22 @@
     <header>
 <main class="flex-col flex-row">
 
-  <!--Login page nav (homepage)-->
-  <nav class = "nav-constant">
+ <!--Logged in Nav-->
+<nav class = "nav-constant">
+    <div class="logout items-end">
+        <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="logout" href="#">logout</button>
+    </div>
     <div class="grid justify-items-center">
-      <div class="pt-5 pb-0">
+      <div>
         <a href="#" class="logo inline">dinner party</a>
         <img class="inline pb-7 pl-5" src="/public/assets/chair-icon.png"/>
       </div class="mb-4">
-      <button class="button-main inline text-white px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="loginBtn" href="#">login</button>
+      <div class="flex-row">
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="profileNavBtn" href="#">profile</button>
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="#">parties</button>
+      </div>
     </div>
-  </nav>
+</nav>
      <div class="dashboard">
         {{#if loggedIn }}
            <a href="/dashboard">Dashboard</a>
@@ -50,7 +56,7 @@
                   </div>
               </div>
        </div>
-    </nav>
+  </nav>
     </header>
 
     <main>
