@@ -5,33 +5,45 @@
 @tailwind utilities;
 
 :root {
-    --logo: #6CBAAB;
-    --h1: #FEA202;
-    --background-lite: #F7F5F5;
-    --button1-top-gradient: #6D648B;
-    --button1-bottom-gradient: #B1A8CE;
-    --h2: #6D648B;
+    /* colors */
+    --purple-1-light: #D6CEF0;
+    --purple-1-dark: #978CBC;
+    --purple-2-light: #B1A8CE;
+    --purple-2-dark: #6D648B;
+    --orange-light: #FFDFA7;
+    --orange-dark: #FFA914;
+    --background-light: #F7F5F5;
+    --background-medium: #E6E6E6;
+    --background-dark: #707070;
+    /* logo */
+    --logo-color: #6CBAAB;
+    --logo-font-family: 'Great Vibes', cursive;
+    --logo-font-size: 80px;
+    /* h1 */
+    --h1-font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif; 
+    /* h2 */
+    --h2-font-family: 'Nanum Gothic', sans-serif;
+    /* buttons */
+    --button-transition: 0.5s;
+    
 }
-
-/*Testing upstream*/
-
 
 /* USAGE- throughout entire app */
 .logo {
-    font-family: 'Great Vibes', cursive;
-    color: var(--logo) !important;
-    font-size: 80px !important;
+    font-family: var(--logo-font-family);
+    color: var(--logo-color) !important;
+    font-size: var(--logo-font-size) !important;
 }
 
 /* USAGE- throughout entire app */
 .nav-constant {
-    background-color: var(--background-lite);
+    background-color: var(--background-light);
 }
 
 /* USAGE- nav items and actions buttons: continue, skip, next, sign-up, finish, create*/
 .button-main {
-    background-image: linear-gradient(var(--button1-top-gradient), var(--button1-bottom-gradient));
-    transition: 0.5s;
+    background-image: linear-gradient(var(--purple-2-dark), var(--purple-2-light));
+    transition: var(--button-transition);
     background-size: 350%;
 }
 
@@ -40,6 +52,17 @@
     background-position: 0% 75%;
 }
 
+.h2 {
+    font-family: var(--h2-font-family);
+    color: var(--purple-2-dark);
+}
+
+/*USAGE- all data entry text areas*/
+.text-entry {
+    background-image: linear-gradient(var(--background-light), var(--background-medium));
+}
+
+/*HOMEPAGE COMPONENTS*/
 .hero {
     position: relative;
     text-align: center;
@@ -51,11 +74,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--h1);
-    font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+    color: var(--orange-dark);
+    font-family: var(--h1-font-family);
   }
 
-.h2 {
-    font-family: 'Nanum Gothic', sans-serif;
-    color: var(--h2);
+.homepage-about {
+    background-color: var(--background-light);
+    font-family: var(--h2-font-family);
+    color: var(--background-dark);
 }

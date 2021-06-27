@@ -36,10 +36,36 @@
   </div>
 
   <!--Sign up form-->
- <div class="sign-up">
-<div class="h2 m-5 text-3xl grid justify-items-center">Join the conversation</div>
- </div>
+<div class="sign-up">
+  <div class="h2 m-5 text-3xl grid justify-items-center">Join the conversation</div>
+</div>
 
+<!--add action to send form-data-->
+<form class="grid justify-items-center sign-up-form">
+  <div class="flex-row my-2">
+    <label for="username" class="pr-2">Username:</label>
+    <input type="text" id="set-username" name="username" placeholder="username" class="text-entry py-1 pl-3 rounded-lg">
+  </div>
+  <div class="flex-row my-2">
+    <label for="password" class="pr-2">Password:</label>
+    <input type="password" id="set-password" name="password" placeholder="password" class="text-entry py-1 pl-3 rounded-lg">
+  </div>
+  <div class="flex-row my-2">
+    <label for="recovery-email" class="pr-2">Email:</label>
+    <input type="email" id="user-email" name="email" placeholder="email" class="text-entry py-1 pl-3 ml-7 rounded-lg">
+  </div>
+  <input type="submit" value="Submit" class="button-main inline text-white my-3 px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="sign-up-btn">
+</form>
+
+<!--About brand section-->
+<div class="homepage-about p-6">
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum earum eius quidem doloremque voluptate perferendis, perspiciatis ullam libero debitis modi, reprehenderit dolore deserunt velit ducimus ea optio eligendi. Iusto, quis.
+</div>
+
+<!--Footer-->
+<footer class="footer, p-4">
+  Dinner Party 2021 &copy; 
+</footer>
 </main>
     <link rel="stylesheet" href="/public/css/style.css"/>
 </body>
