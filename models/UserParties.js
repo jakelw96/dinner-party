@@ -35,4 +35,4 @@ UserParties.init(
     }      
 );
 
-module.expors = UserParties;
+module.exports = UserParties;
