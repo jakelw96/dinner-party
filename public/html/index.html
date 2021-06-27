@@ -25,7 +25,7 @@
         <a href="#" class="logo inline">dinner party</a>
         <img class="inline pb-7 pl-5" src="/public/assets/chair-icon.png"/>
       </div class="mb-4">
-      <button class="button-main inline text-white px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="login-btn">login</button>
+      <button class="button-main inline text-white px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="loginBtn" href="#">login</button>
     </div>
   </nav>
 
@@ -44,21 +44,21 @@
 <form class="grid justify-items-center sign-up-form">
   <div class="flex-row my-2">
     <label for="username" class="pr-2">Username:</label>
-    <input type="text" id="set-username" name="username" placeholder="username" class="text-entry py-1 pl-3 rounded-lg">
+    <input type="text" id="username" name="username" placeholder="username" class="text-entry py-1 pl-3 rounded-lg">
   </div>
   <div class="flex-row my-2">
     <label for="password" class="pr-2">Password:</label>
-    <input type="password" id="set-password" name="password" placeholder="password" class="text-entry py-1 pl-3 rounded-lg">
+    <input type="password" id="password" name="password" placeholder="password" class="text-entry py-1 pl-3 rounded-lg">
   </div>
   <div class="flex-row my-2">
     <label for="recovery-email" class="pr-2">Email:</label>
-    <input type="email" id="user-email" name="email" placeholder="email" class="text-entry py-1 pl-3 ml-7 rounded-lg">
+    <input type="email" id="email" name="email" placeholder="email" class="text-entry py-1 pl-3 ml-7 rounded-lg">
   </div>
-  <input type="submit" value="Submit" class="button-main inline text-white my-3 px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="sign-up-btn">
+  <input type="submit" value="Sign Up" class="button-main inline text-white my-3 px-16 py-1 mb-7 md:px-40 md:py-5 md:text-3xl rounded-lg" id="sign-up-btn">
 </form>
 
 <!--About brand section-->
-<div class="homepage-about p-6">
+<div class="div-bubble p-6">
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum earum eius quidem doloremque voluptate perferendis, perspiciatis ullam libero debitis modi, reprehenderit dolore deserunt velit ducimus ea optio eligendi. Iusto, quis.
 </div>
 
@@ -67,6 +67,18 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum earum eius qui
   Dinner Party 2021 &copy; 
 </footer>
 </main>
+
+<!--Modal-->
+<section class="login-modal">
+  <div class="login-modal-body">
+    <button class="button-main inline text-white my-3 px-16 py-1 mb-7 rounded-lg">login</button>
+    <button class="button-main inline text-white my-3 px-16 py-1 mb-7 rounded-lg">forgot password</button>
+  </div>
+</section>
+
+<!--Scripts-->
     <link rel="stylesheet" href="/public/css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/public/javascript/modal.js"></script>
 </body>
 </html>

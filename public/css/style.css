@@ -15,6 +15,7 @@
     --background-light: #F7F5F5;
     --background-medium: #E6E6E6;
     --background-dark: #707070;
+    --p-text: #4D4444;
     /* logo */
     --logo-color: #6CBAAB;
     --logo-font-family: 'Great Vibes', cursive;
@@ -47,14 +48,34 @@
     background-size: 350%;
 }
 
+.button-secondary {
+    background-image: linear-gradient(var(--orange-dark), var(--orange-light));
+}
+
 /*NOT WORKING */
 .button-main:hover {
     background-position: 0% 75%;
 }
 
+.h1 {
+    font-family: var(--h1-font-family);
+    color: var(--orange-dark);
+    font-size: 30px;
+}
+
+.h1-mini {
+    font-family: var(--h1-font-family);
+    color: var(--orange-dark);
+    font-size: 16px;
+}
+
 .h2 {
     font-family: var(--h2-font-family);
     color: var(--purple-2-dark);
+}
+
+.p-text {
+    color: var(--p-text);
 }
 
 /*USAGE- all data entry text areas*/
@@ -74,12 +95,45 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--orange-dark);
-    font-family: var(--h1-font-family);
   }
 
-.homepage-about {
+.div-bubble {
     background-color: var(--background-light);
     font-family: var(--h2-font-family);
     color: var(--background-dark);
+}
+  
+.login-modal, .login-modal-body {
+    position: absolute;
+    top:0;
+    left:0;
+    height:10%;
+    width: 10%;
+  }
+  
+  .login-modal {
+    z-index:100;
+  }
+  
+  .login-modal-body {
+    z-index:101;
+    background-color: #000;
+    visibility: hidden;
+    opacity: 0;
+      transition: opacity 0.5s, visibility 0s 0.5s;
+  }
+
+.login-modal-body.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s;
+  }
+
+.profile-avatar {
+    background-color: var(--background-medium);
+}
+
+.interest {
+    background-image: linear-gradient(var(--purple-1-light), var(--purple-1-dark));
+    color: white;
 }

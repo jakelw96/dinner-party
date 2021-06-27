@@ -1,4 +1,4 @@
-async function newFormHandler(event) {
+async function newPartyHandler(event) {
     event.preventDefault();
 
     //subject to change based on how html is naming elements 
@@ -6,8 +6,9 @@ async function newFormHandler(event) {
     const party_name = document.querySelector('input[name="party-name"]').value;
     const party_bio = document.querySelector('textarea[name="party-bio"]').value;
 
+    // we still need functionality to add interests and users 
   
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/parties`, {
       method: 'POST',
       body: JSON.stringify({
         party_name,
@@ -29,4 +30,4 @@ async function newFormHandler(event) {
 
 //subject to change based on how html is naming elements 
   
-document.querySelector('.new-party-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-party-form').addEventListener('submit', newPartyHandler);
