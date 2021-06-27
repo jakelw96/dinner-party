@@ -78,6 +78,11 @@
     color: var(--p-text);
 }
 
+.orange-text {
+    color: var(--orange-dark);
+    font-size: 16px;
+}
+
 /*USAGE- all data entry text areas*/
 .text-entry {
     background-image: linear-gradient(var(--background-light), var(--background-medium));
@@ -128,10 +133,6 @@
     visibility: visible;
     transition: opacity 0.5s;
   }
-
-.profile-avatar {
-    background-color: var(--background-medium);
-}
 
 .interest {
     background-image: linear-gradient(var(--purple-1-light), var(--purple-1-dark));
