@@ -69,6 +69,12 @@
     font-size: 16px;
 }
 
+.h1-large {
+    font-family: var(--h1-font-family);
+    color: var(--orange-dark);
+    font-size: 50px;
+}
+
 .h2 {
     font-family: var(--h2-font-family);
     color: var(--purple-2-dark);
