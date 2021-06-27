@@ -15,10 +15,6 @@ Party.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        party_bio: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
