@@ -116,7 +116,6 @@ router.delete('/:id', isAuthenticate, (req,res) => {
     Post.destroy({
         where: {
             id: req.params.id
-            //should i put include party name the post is associated with here?
         }
     })
     .then(dbPostData => {
