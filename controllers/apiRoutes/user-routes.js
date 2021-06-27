@@ -87,7 +87,7 @@ router.post('/', (req, res) => {
 });
 
 // Update users interests
-router.put('/:id', (req, res) => {
+router.put('/:id', isAuthenticate, (req, res) => {
     User.update(req.body, {
         individualHooks: true,
         where: {
