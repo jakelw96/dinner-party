@@ -86,15 +86,15 @@ Interest.belongsToMany(Party, {
     foreignKey: 'interest_id'
 });
 
-User.belongsToMany(Party, {
-    through: UserParties,
-    foreignKey: 'user_id'
-});
+// User.belongsToMany(Party, {
+//     through: UserParties,
+//     foreignKey: 'user_id'
+// });
 
-Party.belongsToMany(User, {
-    through: UserParties,
-    foreignKey: 'party_id'
-});
+// Party.belongsToMany(User, {
+//     through: UserParties,
+//     foreignKey: 'party_id'
+// });
 
 
 module.exports = { 
