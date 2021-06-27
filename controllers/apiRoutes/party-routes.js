@@ -70,12 +70,14 @@ router.get('/:id', (req,res) => {
 });
 
 //Create a party
-router.post('/', isAuthenticate, (req,res) => {
+router.post('/', (req,res) => {
     Party.create({
         party_name: req.body.party_name,
-        user_id: req.session.user_id,    // Will be session data later
+        user_id: req.body.user_id,    // Will be session data later
         interestIds: req.body.interestIds
     })
+
+
     .then((party) => {
         if (req.body.interestIds.length) {
             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
@@ -86,9 +88,7 @@ router.post('/', isAuthenticate, (req,res) => {
             })
             return PartyInterests.bulkCreate(interestsTagsArr)
         }
-        // If no interests
-        res.status(200).json(party)
-    })
+   
     .then(dbPartyData => {
       if (!dbPartyData) {
             res.status(404).json({message: "This party name already exists!"});
