@@ -21,14 +21,22 @@ User.hasOne(Bio, {
 Bio.belongsTo(User, {
     foreignKey: 'user_id'
 });
-
-User.hasMany(Party, {
+User.belongsToMany(Party, {
+    through: UserParties,
     foreignKey: 'user_id'
 });
 
-Party.belongsTo(User, {
-    foreignKey: 'user_id'
+Party.belongsToMany(User, {
+    through: UserParties,
+    foreignKey: 'party_id'
 });
+// User.hasMany(Party, {
+//     foreignKey: 'user_id'
+// });
+
+// Party.belongsTo(User, {
+//     foreignKey: 'user_id'
+// });
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -63,7 +71,7 @@ Post.hasMany(Comment, {
 });
 
 
-module.exports = { User, Bio, Party, Post, Comment };
+
 
 
 User.belongsToMany(Interest, {
@@ -86,15 +94,16 @@ Interest.belongsToMany(Party, {
     foreignKey: 'interest_id'
 });
 
-User.belongsToMany(Party, {
-    through: UserParties,
-    foreignKey: 'user_id'
-});
+// User.belongsToMany(Party, {
+//     through: UserParties,
+//     foreignKey: 'user_id'
+// });
 
-Party.belongsToMany(User, {
-    through: UserParties,
-    foreignKey: 'party_id'
-});
+// Party.belongsToMany(User, {
+//     through: UserParties,
+//     foreignKey: 'party_id'
+// });
+
 
 
 module.exports = { 

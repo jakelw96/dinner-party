@@ -70,24 +70,24 @@ router.get('/:id', (req,res) => {
 });
 
 //Create a party
-router.post('/', isAuthenticate, (req,res) => {
+router.post('/', (req,res) => {
     Party.create({
         party_name: req.body.party_name,
-        user_id: req.session.user_id,    // Will be session data later
+        user_id: req.body.user_id,    // Will be session data later
         interestIds: req.body.interestIds
     })
-    // .then((party) => {
-    //     if (req.body.interestIds.length) {
-    //         const userIdArr = req.body.interestIds.map((interest_id) => {
+    // .then((userParty) => {
+    //     if (req.body.user_id.length) {
+    //         const userIdArr = req.body.user_id.map((user_id) => {
     //             return {
-    //                party_id: party.id,
-    //                interest_id,
+    //                party_id: userParty.id,
+    //                user_id,
     //             };
     //         })
     //         return UserParties.bulkCreate(userIdArr)
     //     }
     //     // If no interests
-    //     res.status(200).json(party)
+    //     res.status(200).json(userParty)
     // })
     .then((party) => {
         if (req.body.interestIds.length) {
@@ -99,6 +99,16 @@ router.post('/', isAuthenticate, (req,res) => {
             })
             return PartyInterests.bulkCreate(interestsTagsArr)
         }
+        if (req.body.user_id.length) {
+            const userIdArr = req.body.user_id.map((user_id) => {
+                return {
+                   party_id: party.id,
+                   user_id,
+                };
+            })
+            return UserParties.bulkCreate(userIdArr)
+        }
+    
         // If no interests
         res.status(200).json(party)
     })
