@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        include: [      // This is where we will associate with the other models
+        include: [      
             {
                 model: Bio,
                 attributes: ['id', 'bio_text']
