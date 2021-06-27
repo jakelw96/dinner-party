@@ -76,20 +76,19 @@ router.post('/', isAuthenticate, (req,res) => {
         user_id: req.session.user_id,    // Will be session data later
         interestIds: req.body.interestIds
     })
-    .then((party) => {
-        if (req.body.interestIds.length) {
-            const userIdArr = req.body.interestIds.map((interest_id) => {
-                return {
-                   party_id: party.id,
-                   interest_id,
-                   user_id
-                };
-            })
-            return UserParties.bulkCreate(userIdArr)
-        }
-        // If no interests
-        res.status(200).json(party)
-    })
+    // .then((party) => {
+    //     if (req.body.interestIds.length) {
+    //         const userIdArr = req.body.interestIds.map((interest_id) => {
+    //             return {
+    //                party_id: party.id,
+    //                interest_id,
+    //             };
+    //         })
+    //         return UserParties.bulkCreate(userIdArr)
+    //     }
+    //     // If no interests
+    //     res.status(200).json(party)
+    // })
     .then((party) => {
         if (req.body.interestIds.length) {
             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
