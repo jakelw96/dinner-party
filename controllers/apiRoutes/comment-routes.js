@@ -56,7 +56,7 @@ router.post('/', isAuthenticate, (req, res) => {
     if (req.session) {
         Comment.create({
             comment_text: req.body.comment_text,
-            user_id: req.session.user_id, // Will be session data 
+            user_id: req.session.user_id, 
             post_id: req.body.post_id
         })
         .then(dbCommentData => res.json(dbCommentData))
@@ -72,7 +72,7 @@ router.put('/:id', isAuthenticate, (req,res) => {
     Comment.update(
         {
             comment_text: req.body.comment_text,
-            user_id: req.body.user_id, // To be session later
+            user_id: req.session.user_id, // To be session later
             post_id: req.body.post_id
         },
         {

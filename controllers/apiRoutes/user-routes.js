@@ -53,6 +53,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
+        email: req.body.email,
         password: req.body.password,
         interestIds: req.body.interestIds
     })
@@ -87,7 +88,7 @@ router.post('/', (req, res) => {
 });
 
 // Update users interests
-router.put('/:id', (req, res) => {
+router.put('/:id', isAuthenticate, (req, res) => {
     User.update(req.body, {
         individualHooks: true,
         where: {
@@ -115,7 +116,7 @@ router.put('/:id', (req, res) => {
             .filter(({ interest_id }) => !req.body.interestIds.includes(interest_id))
             .map(({ id }) => id);
 
-        // Delete tags to remove and create the new tags for party
+        // Delete tags to remove and create the new interests for user
         return Promise.all([
             UserInterests.destroy({where: { id: interestsToRemove } }),
             UserInterests.bulkCreate(newInterests)
@@ -132,12 +133,12 @@ router.put('/:id', (req, res) => {
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
-            username: req.body.username
+            email: req.body.email
         }
     })
     .then(dbUserData => {
         if (!dbUserData) {
-            res.status(400).json({ message: 'No user found' });
+            res.status(400).json({ message: 'No user found with this email' });
             return;
         }
 

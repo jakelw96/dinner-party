@@ -76,19 +76,8 @@ router.post('/', (req,res) => {
         user_id: req.body.user_id,    // Will be session data later
         interestIds: req.body.interestIds
     })
-    // .then((userParty) => {
-    //     if (req.body.user_id.length) {
-    //         const userIdArr = req.body.user_id.map((user_id) => {
-    //             return {
-    //                party_id: userParty.id,
-    //                user_id,
-    //             };
-    //         })
-    //         return UserParties.bulkCreate(userIdArr)
-    //     }
-    //     // If no interests
-    //     res.status(200).json(userParty)
-    // })
+
+
     .then((party) => {
         if (req.body.interestIds.length) {
             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
@@ -99,19 +88,7 @@ router.post('/', (req,res) => {
             })
             return PartyInterests.bulkCreate(interestsTagsArr)
         }
-        if (req.body.user_id.length) {
-            const userIdArr = req.body.user_id.map((user_id) => {
-                return {
-                   party_id: party.id,
-                   user_id,
-                };
-            })
-            return UserParties.bulkCreate(userIdArr)
-        }
-    
-        // If no interests
-        res.status(200).json(party)
-    })
+   
     .then(dbPartyData => {
       if (!dbPartyData) {
             res.status(404).json({message: "This party name already exists!"});

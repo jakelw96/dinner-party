@@ -4,14 +4,9 @@ const Party = require('./Party');
 const Post = require('./Post');
 const Comment = require('./Comment')
 const Interest = require('./Interest');
-
-const UserParties = require('./UserParties');
 const UserInterests = require('./UserInterests');
 const PartyInterests = require('./PartyInterests');
 
-
-
-// Other models will require here
 
 // This is where we will associate the different models
 User.hasOne(Bio, {
@@ -30,13 +25,13 @@ Party.belongsToMany(User, {
     through: UserParties,
     foreignKey: 'party_id'
 });
-// User.hasMany(Party, {
-//     foreignKey: 'user_id'
-// });
+ User.hasMany(Party, {
+   foreignKey: 'user_id'
+});
 
-// Party.belongsTo(User, {
-//     foreignKey: 'user_id'
-// });
+Party.belongsTo(User, {
+   foreignKey: 'user_id'
+ });
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -70,10 +65,6 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 });
 
-
-
-
-
 User.belongsToMany(Interest, {
     through: UserInterests,
     foreignKey: 'user_id'
@@ -94,17 +85,6 @@ Interest.belongsToMany(Party, {
     foreignKey: 'interest_id'
 });
 
-// User.belongsToMany(Party, {
-//     through: UserParties,
-//     foreignKey: 'user_id'
-// });
-
-// Party.belongsToMany(User, {
-//     through: UserParties,
-//     foreignKey: 'party_id'
-// });
-
-
 
 module.exports = { 
     User, 
@@ -115,8 +95,6 @@ module.exports = {
     Interest, 
     UserInterests, 
     PartyInterests,
-    UserParties
-
 };
 
 
