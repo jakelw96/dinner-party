@@ -15,6 +15,7 @@ Party.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -22,7 +23,6 @@ Party.init(
                 model: 'user',
                 key: 'id'
             }
-        }
    
         },
         {
