@@ -50,11 +50,7 @@
 
 .button-secondary {
     background-image: linear-gradient(var(--orange-dark), var(--orange-light));
-}
-
-/*NOT WORKING */
-.button-main:hover {
-    background-position: 0% 75%;
+    color: white;
 }
 
 .h1 {
