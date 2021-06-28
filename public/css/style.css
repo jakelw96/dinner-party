@@ -118,3 +118,11 @@
     background-image: linear-gradient(var(--purple-1-light), var(--purple-1-dark));
     color: white;
 }
+
+#myDIV {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: rgb(221, 143, 228);
+    margin-top: 20px;
+}
