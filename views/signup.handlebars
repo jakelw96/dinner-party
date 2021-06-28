@@ -37,7 +37,7 @@
     <div id="signup-interests" class="grid grid-cols-3 m-8 md:grid-cols-6">
         {{#each interests as |interest|}}
         <button id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
-          <span>+ </span>{{interest.id}} - {{interest.interest_name}}
+          {{interest.id}} - {{interest.interest_name}}
         </button>
         {{/each}}
     </div>

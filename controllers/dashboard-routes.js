@@ -59,11 +59,27 @@ router.get('/', (req, res) => {
             loggedIn: true
         })
     })
-    .catch(err => {
+     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
+
+// router.get('/', (req, res) => {
+//     Interest.findAll({
+//         where: {
+//             user_id: req.session.user_id
+//         },
+//         attributes: ['id', 'interest_name']
+//     })
+//     .then(dbInterestData => {
+//         const interests = dbInterestData.map(interest => interest.get({ plain: true }));
+
+//         res.render('dashboard', {
+//             interests,
+//         })
+//     })
+// });
 
 // Get a single post 
 router.get('/post/:id',  (req, res) => {
