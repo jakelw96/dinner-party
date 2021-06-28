@@ -19,15 +19,16 @@ none
 <br />
 
 ## Contributing
-👩‍💻  [apratt7891](https://github.com/apratt7891)
-    [jakelw96] (https://github.com/jakelw96)
-    [BobTarino] (https://github.com/BobTarino)
-    [kellylotz7] (https://github.com/kellylotz7)
-
+<li>
+</ul>[apratt7891](https://github.com/apratt7891)</ul>
+ <ul>   [jakelw96] (https://github.com/jakelw96)</ul>
+<ul>    [BobTarino] (https://github.com/BobTarino)</ul>
+<ul>     [kellylotz7] (https://github.com/kellylotz7)</ul>
+</li>
 ## Questions
-❓ undefined<br />
+
 <br />
 :octocat: Find us on GitHub: [Dinner Party](https://github.com/jakelw96/dinner-party)<br />
 <br />
 
-_This README was generated with ❤️ by The Dinner Party Crew 👩‍💻
+This README was generated with ❤️ by The Dinner Party Crew 👩‍💻
