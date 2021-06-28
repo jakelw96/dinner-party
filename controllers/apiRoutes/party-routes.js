@@ -5,7 +5,7 @@ const isAuthenticate = require('../../utils/authenticate');
 //Get all parties
 router.get('/', (req, res) => {
     Party.findAll({
-        attributes: ['id', 'party_name', 'user_id'],
+        attributes: ['id', 'party_name', 'party_bio', 'user_id'],
         include: [
             {
                 model: Interest,
@@ -30,7 +30,7 @@ router.get('/:id', (req,res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'party_name', 'user_id'],
+        attributes: ['id', 'party_name', 'party_bio', 'user_id'],
         include: [
             {
                 model: Interest,
@@ -70,14 +70,13 @@ router.get('/:id', (req,res) => {
 });
 
 //Create a party
-router.post('/', (req,res) => {
+router.post('/',  (req,res) => {
     Party.create({
         party_name: req.body.party_name,
+        party_bio: req.body.party_bio,
         user_id: req.body.user_id,    // Will be session data later
         interestIds: req.body.interestIds
     })
-
-
     .then((party) => {
         if (req.body.interestIds.length) {
             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
