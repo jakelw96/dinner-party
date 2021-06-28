@@ -1,11 +1,10 @@
+const interestArr = [];
+
 async function loginFormHandler(event) {
     event.preventDefault();
 
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
-
-    console.log(username)
-    console.log(password)
 
     if (username && password) {
         const response = await fetch('/api/users/login', {
@@ -18,7 +17,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            // document.location.replace('/dashboard/');
+            document.location.replace('/dashboard');
             console.log('Success! Logged in!')
         } else {
             alert(response.statusText);
@@ -26,38 +25,46 @@ async function loginFormHandler(event) {
     }
 }
 
+// Clickable interests to add
+let allButtons = document.querySelectorAll('button[class^=interest]');
+
+for (var i = 0; i < allButtons.length; i++) {
+  allButtons[i].addEventListener('click', function() {
+    let interestID = parseInt(this.innerHTML.toString().trim().charAt(0));
+    interestArr.push(interestID)
+  });
+};
+
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    function removeDuplicates(arr) {
+        return arr.filter((value, index) => arr.indexOf(value) === index);
+    };
 
-    if (username && password) {
+    const username = document.getElementById('signup-username').value.trim();
+    const password = document.getElementById('signup-password').value.trim();
+    const interestIds = removeDuplicates(interestArr);
+
+    if (username && password && interestIds) {
         const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
                 username,
-                password
+                password,
+                interestIds
             }),
             headers: { 'Content-Type': 'application/json' }
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard/');
+            document.location.replace('/dashboard');
+            console.log("User created successfully!")
         } else {
             alert(response.statusText);
         }
     }
 }
 
-function signupPage(event) {
-
-    window.location.replace('/signup')
-};
-
 document.getElementById('loginBtn').addEventListener('click', loginFormHandler);
-
-// document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
-
-document.getElementById('sign-up-btn').addEventListener('click', signupPage);
-        
+document.getElementById('signupBtn').addEventListener('click', signupFormHandler);       

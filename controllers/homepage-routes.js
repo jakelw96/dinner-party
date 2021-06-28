@@ -3,7 +3,7 @@ const { User, Party, Post, Comment, Interest } = require('../models');
 const isAuth = require('../utils/authenticate');
 
 // Gets all parties
-router.get('/', isAuth, (req, res) => {
+router.get('/', (req, res) => {
     Party.findAll({
         attributes: ['id', 'party_name', 'party_bio'],
         include: [
@@ -49,11 +49,11 @@ router.get('/', isAuth, (req, res) => {
 });
 
 // Get a single party
-router.get('/party/:id', isAuth, (req, res) => {
+router.get('/party/:id', (req, res) => {
     Party.findOne({
-        where: {
-            id: req.params.id
-        },
+        // where: {
+        //     id: req.params.id
+        // },
         attributes: ['id', 'party_name', 'party_bio'],
         include: [
             {
@@ -94,7 +94,7 @@ router.get('/party/:id', isAuth, (req, res) => {
 
         res.render('single-party', {
             party,
-            loggedIn: req.session.loggedIn
+            loggedIn: true
         });
     })
     .catch(err => {
@@ -135,7 +135,7 @@ router.get('/post/:id', (req, res) => {
 
         res.render('single-post', {
             post,
-            loggedIn: req.session.loggedIn
+            loggedIn: true
         });
     })
     .catch(err => {

@@ -66,10 +66,14 @@ router.post('/', (req, res) => {
                 };
             })
             return UserInterests.bulkCreate(interestsTagsArr)
-        } else {
-            // If no interests
-            res.status(200).json(user)
         }
+
+        // req.session.save(() => {
+        //     req.session.user_id = dbUserData.id;
+        //     req.session.username = dbUserData.username;
+        //     req.session.loggedIn = true;
+        // })
+        // res.json(user) 
     })
     .then(dbUserData => {
         // Session saving data will go here
@@ -80,7 +84,6 @@ router.post('/', (req, res) => {
 
             res.json(dbUserData)
         })
-        res.json(dbUserData);
     })
     .catch(err => {
         console.log(err);
@@ -172,7 +175,7 @@ router.post('/logout', isAuthenticate, (req, res) => {
 });
 
 // Delete a user
-router.delete('/:id', isAuthenticate, (req, res) => {
+router.delete('/:id', (req, res) => {
     User.destroy({
         where: {
             id: req.params.id
