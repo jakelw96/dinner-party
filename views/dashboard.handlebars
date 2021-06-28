@@ -35,20 +35,45 @@
     </div>
   </nav>   
 
-<!--Profile-->
-<div class="settings items-end">
-    <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="settings" href="#">settings</button>
-</div>
+<!--Parties User is Hosting-->
+<h1 class="h1 mt-6 grid justify-items-center">Parties I'm Hosting</h1>
 
-
-<!--User interests-->
-<div id="user-interests" class="grid grid-cols-3 mx-8 md:grid-cols-6">
-  <div id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
-    interest
+<!--IF no Parties-->
+<div class="mb-10 grid justify-items-center"> 
+  <div id="user-friends" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
+    <div>
+      <div class="logo">Uh-oh!</div>
+      <div class="p-text">It looks like you aren't hosting any parties. Create a new party to start a conversation!</div>
   </div>
 </div>
 
+<!--IF Parties-->
+<div id="user-parties" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg mb-10 grid justify-items-left">
+      <!-- Party name -->
+  <a href="#" class="h2 text-2xl pb-2">Party Name</a>
+      <!-- party interests -->
+    <div id="party-interests" class="grid grid-cols-3 md:grid-cols-6 justify-start">
+      <div id="interest-element" class="interest rounded-lg px-8 mr-2 mb-2 border border-purple-900 col-auto">
+          interest
+      </div>
+      <div id="interest-element" class="interest rounded-lg px-8 mr-2 mb-2 border border-purple-900 col-auto">
+        interest
+    </div>
+    <div id="interest-element" class="interest rounded-lg px-8 mr-2 mb-2 border border-purple-900 col-auto">
+      interest
+  </div>
+  <div id="interest-element" class="interest rounded-lg px-8 mr-2 mb-2 border border-purple-900 col-auto">
+    interest
+</div>
+    </div>
+      <!-- party info -->
+    <div class="py-2 p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eveniet atque quasi ipsa, sunt possimus? Ratione, aut! Nostrum culpa at, quisquam eius sint saepe sunt dolore consequatur corrupti, officiis minus.</div>
+      <!-- amount of posts made to party -->
+    <div class="orange-text pt-2 text-align-left">Posts: </div>
+</div>
 
+<!-- Create a new party -->
+<a href="#" class="h1-large">+ Host a New Party</a>
 
  
 
