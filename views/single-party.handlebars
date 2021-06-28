@@ -25,16 +25,14 @@
 <!--Conversations-->
 <h1 class="h1 mt-4 grid justify-items-center">Conversations</h1>
 
-<!--IF no Conversations-->
-<div class="mb-10 grid justify-items-center"> 
-  <div class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
-    <div>
-      <div class="logo">Uh-oh!</div>
-      <div class="p-text">No one has started any conversations. Become the life of the party and start one now!</div>
-  </div>
-</div>
-
 <!--IF Conversations-->
+{{#if party.post.length}}
+{{#each party.post as |post|}}
+
+{{> post-info post}}
+{{/each}} 
+
+
 <div class="group p-text grid justify-items-center">
 <div id="party-conversations" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg mb-10 grid justify-items-left group-hover:bg-gray-200">
       <!-- convo name -->
@@ -49,4 +47,15 @@
     <div class="orange-text pt-2 text-align-left" id="comments-on-post">Comments: </div>
 </div> 
 </div>
+{{else}}
+<!--IF no Conversations-->
+<div class="mb-10 grid justify-items-center"> 
+  <div class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
+    <div>
+      <div class="logo">Uh-oh!</div>
+      <div class="p-text">No one has started any conversations. Become the life of the party and start one now!</div>
+  </div>
+</div>
+{{/if}}
+
   
