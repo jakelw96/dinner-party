@@ -1,7 +1,52 @@
- <!-- Party name -->
-  <a href="#" class="h2 text-2xl pb-2">Party Name</a>
+  <!-- Party Heading -->
+<div class="party-heading my-6">
+    <div class="grid justify-items-center p-4">
+        <h1 class="h1-large">Party Name</h1>
+        <div id="party-interests" class="grid grid-cols-3 mx-8 mt-2 md:grid-cols-6">
+            <div id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
+              interest
+            </div>
+        </div>
+    </div>
+</div>
 
-  <!-- party info -->
-    <div class="py-2 p-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eveniet atque quasi ipsa, sunt possimus? Ratione, aut! Nostrum culpa at, quisquam eius sint saepe sunt dolore consequatur corrupti, officiis minus.</div>
-      <!-- amount of posts made to party -->
-    <div class="orange-text pt-2 text-align-left">Posts: </div>
+<!-- Start New Convo -->
+<div class="grid justify-items-center">
+    <button class="button-secondary text-white font-medium px-16 py-3 mt-2 mx-1 rounded-lg">+ Start a New Conversation</button>
+    <h1 class="h2 inline pt-4 pb-4 text-2xl">Hosted by: <span class="h1" id="username">@User</span></h1>
+</div>
+
+<!-- Description -->
+<div class="grid justify-items-center"> 
+    <div id="party-description" class="p-text div-bubble p-6 m-2 mb-2 w-11/12 rounded-lg grid justify-items-center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id ratione officia aut rem cumque iste error. Laudantium laboriosam alias nihil voluptate maxime neque illum. Accusamus nostrum magni nisi obcaecati pariatur!.
+    </div>
+</div>
+
+<!--Conversations-->
+<h1 class="h1 mt-4 grid justify-items-center">Conversations</h1>
+
+<!--IF no Conversations-->
+<div class="mb-10 grid justify-items-center"> 
+  <div class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
+    <div>
+      <div class="logo">Uh-oh!</div>
+      <div class="p-text">No one has started any conversations. Become the life of the party and start one now!</div>
+  </div>
+</div>
+
+<!--IF Conversations-->
+<div class="group p-text grid justify-items-center">
+<div id="party-conversations" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg mb-10 grid justify-items-left group-hover:bg-gray-200">
+      <!-- convo name -->
+  <a href="#" class="h2 text-2xl pb-2" id="conversation-name">Conversation Name</a>
+      <!-- convo info -->
+    <div class="py-2 p-text" id="conversation-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eveniet atque quasi ipsa, sunt possimus? Ratione, aut! Nostrum culpa at, quisquam eius sint saepe sunt dolore consequatur corrupti, officiis minus.</div>
+    
+    <!-- add to conversation -->
+    <button class="button-main inline text-white px-16 py-1 mb-2 mx-1 rounded-lg grid justify-items-center" id="join-convo-btn">Join the Conversation</button>
+    
+    <!-- amount of comments made to convo -->
+    <div class="orange-text pt-2 text-align-left" id="comments-on-post">Comments: </div>
+</div> 
+</div>
+  
