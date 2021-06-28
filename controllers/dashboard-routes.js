@@ -6,7 +6,7 @@ const isAuth = require('../utils/authenticate');
 router.get('/', (req, res) => {
     User.findOne({
         where: {
-            user_id: req.session.user_id
+            id: req.session.user_id
         },
         attributes: ['id', 'username'],
         include: [
@@ -31,12 +31,12 @@ router.get('/', (req, res) => {
                                 attributes: ['id', 'comment_text', 'post_id', 'user_id'],
                                 include: {
                                     model: User,
-                                    attributes: ['username']
+                                    attributes: ['id', 'username']
                                 }
                             },
                             {
                                 model: User,
-                                attributes: ['username']
+                                attributes: ['id','username']
                             } 
                         ]
                     },
@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
                     },
                     {
                         model: User,
-                        attributes: ['username']
+                        attributes: ['id','username']
                     }
                 ] 
             }
@@ -66,7 +66,7 @@ router.get('/', (req, res) => {
 });
 
 // Get a single post 
-router.get('/post/:id', isAuth, (req, res) => {
+router.get('/post/:id',  (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id

@@ -46,7 +46,7 @@ async function signupFormHandler(event) {
     const password = document.getElementById('signup-password').value.trim();
     const interestIds = removeDuplicates(interestArr);
 
-    if (username && password && interestIds) {
+    if (username && password) {
         const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
@@ -58,8 +58,8 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
             console.log("User created successfully!")
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }

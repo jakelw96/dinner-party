@@ -58,6 +58,15 @@ router.post('/', (req, res) => {
         interestIds: req.body.interestIds
     })
     .then((user) => {
+        // Session saving data will go here
+        req.session.save(() => {
+            req.session.user_id = user.id;
+            req.session.username = user.username;
+            req.session.loggedIn = true;
+
+            // res.json(user)
+        })
+        
         if (req.body.interestIds.length) {
             const interestsTagsArr = req.body.interestIds.map((interest_id) => {
                 return {
@@ -67,23 +76,8 @@ router.post('/', (req, res) => {
             })
             return UserInterests.bulkCreate(interestsTagsArr)
         }
-
-        // req.session.save(() => {
-        //     req.session.user_id = dbUserData.id;
-        //     req.session.username = dbUserData.username;
-        //     req.session.loggedIn = true;
-        // })
-        // res.json(user) 
-    })
-    .then(dbUserData => {
-        // Session saving data will go here
-        req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.loggedIn = true;
-
-            res.json(dbUserData)
-        })
+        res.json(user)
+        
     })
     .catch(err => {
         console.log(err);
