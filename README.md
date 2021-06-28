@@ -1,10 +1,14 @@
 <h1 align="center"> 🎉 Dinner Party 🎉</h1>
-  
+
+![badgeImage](https://img.shields.io/badge/license-MIT-blue)
 
 ## Description
 Dinner Party is a place to talk about the things you like and find more things to love.
+## UserStory
+As a user,
+I want a forum-style social media site
+So that I can post about topics that relate to me. 
 ## Table of Contents
-- [Description](#description)
 - [Installation](#install)
 - [Usage](#usage)
 - [License](#license)
@@ -18,7 +22,7 @@ The user will create a username and a password, select interests and create a bi
 <!--insert deployable link here-->
 
 ## License
-none
+    Licensed under MIT
 <br />
 
 ## Contributing

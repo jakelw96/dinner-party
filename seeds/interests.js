@@ -80,7 +80,12 @@ const interestData = [
     {
         id: 20,
         interest_name: 'Sailing'
+    },
+        {
+        id: 21,
+        interest_name: 'Cooking'
     }
+
 
 ];
 
