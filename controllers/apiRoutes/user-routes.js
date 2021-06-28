@@ -64,7 +64,7 @@ router.post('/', (req, res) => {
             req.session.username = user.username;
             req.session.loggedIn = true;
 
-            res.json(user)
+            // res.json(user)
         })
         
         if (req.body.interestIds.length) {
