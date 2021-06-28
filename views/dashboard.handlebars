@@ -18,33 +18,39 @@
 <body>
 <main class="flex-col flex-row">
 
-{{> nav}}    
-
-{{> profile}}
-
-<div class="my-10 grid justify-items-center"> 
-    {{#if friends true}}
-  <h1 class="h1">Friends</h1>
-  <div id="user-friends" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
-  <div class="grid grid-cols-3 mx-8 md:grid-cols-6">
-      <div class="inline rounded-lg bg-white border border-grey-400">
-        <div class="profile-avatar rounded-full h-24 w-24 flex items-center justify-center" id="profile-avatar">
-          <img class="p-8"src="/public/assets/chair-icon.png"/>
-      </div>
-      <h1 class="h1-mini">@user2</h1>
+<!--Logged in Nav-->
+<nav class = "nav-constant">
+    <div class="logout items-end">
+        <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="logout" href="#">logout</button>
+    </div>
+    <div class="grid justify-items-center">
+      <div>
+        <a href="#" class="logo inline">dinner party</a>
+        <img class="inline pb-7 pl-5" src="/public/assets/chair-icon.png"/>
+      </div class="mb-4">
+      <div class="flex-row">
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="profileNavBtn" href="#">profile</button>
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="#">explore</button>
       </div>
     </div>
-  </div>
-  {{else}} 
-   Find friends in the explore section.
-  {{/if}}
-</div>  
+  </nav>   
 
-   <!--Footer-->
-<footer class="footer, p-4">
-    Dinner Party 2021 &copy; 
-  </footer>
-  </main>
+<!--Profile-->
+<div class="settings items-end">
+    <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="settings" href="#">settings</button>
+</div>
+
+
+<!--User interests-->
+<div id="user-interests" class="grid grid-cols-3 mx-8 md:grid-cols-6">
+  <div id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
+    interest
+  </div>
+</div>
+
+
+
+ 
 
 
 <!--Scripts-->

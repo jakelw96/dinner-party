@@ -21,47 +21,36 @@
 
  <!--Logged in Nav-->
 <nav class = "nav-constant">
+{{#if loggedIn }}
     <div class="logout items-end">
         <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="logout" href="#">logout</button>
     </div>
+{{/if}} 
     <div class="grid justify-items-center">
       <div>
         <a href="#" class="logo inline">dinner party</a>
         <img class="inline pb-7 pl-5" src="/public/assets/chair-icon.png"/>
       </div class="mb-4">
+{{#if loggedIn }}     
       <div class="flex-row">
         <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="profileNavBtn" href="#">profile</button>
         <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="#">parties</button>
       </div>
+{{/if}}      
     </div>
 </nav>
-     <div class="dashboard">
-        {{#if loggedIn }}
-           <a href="/dashboard">Dashboard</a>
-        {{else}}
-           <a href="/login">Dashboard</a>
-          {{/if}}
-            </div>
-          {{#if loggedIn }}
-            <div class="logout">
-            <button id="logout" class="btnLogout">Logout</button>
-            </div>
-          {{else}}
-            <a href="/login">Login</a>
-                  {{/if}}
-            </div>
-            </div>
-                <div class="col-12">
-                  <h1 class="jumbo-tron">Dinner Party</h1>
-                  </div>
-              </div>
-       </div>
-  </nav>
-    </header>
 
+  </header>
     <main>
        {{{body}}} 
     </main>
+
+  <!--Footer-->
+<footer class="footer, p-4">
+    Dinner Party 2021 &copy; 
+  </footer>
+  </main>
+
 {{#if loggedIn }}
 <script src="/javascript/logout.js"></script>
 {{/if}}
