@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User, Party, Post, Comment, Interest } = require('../models');
+const isAuth = require('../utils/authenticate');
 
 // Gets all parties
-router.get('/', (req, res) => {
+router.get('/', isAuth, (req, res) => {
     Party.findAll({
         attributes: ['id', 'party_name', 'party_bio'],
         include: [
@@ -48,7 +49,7 @@ router.get('/', (req, res) => {
 });
 
 // Get a single party
-router.get('/party/:id', (req, res) => {
+router.get('/party/:id', isAuth, (req, res) => {
     Party.findOne({
         where: {
             id: req.params.id
