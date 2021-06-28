@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dinner Party</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+     
+     <!--Importing custom fonts-->
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+     <!--Tailwind CDN-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css" integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" />
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner Party</title>
 </head>
-
 <body>
-  <div class="wrapper">
     <header>
-      <h1>
-        <a href="/">Dinner Party</a>
-      </h1>
-      <nav>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
-  </div>
-  
-  {{#if loggedIn}}
-  <script src="/javascript/logout.js"></script>
-  {{/if}}
-</body>
+<main class="flex-col flex-row">
 
+ <!--Logged in Nav-->
+<nav class = "nav-constant">
+    <div class="logout items-end">
+        <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="logout" href="#">logout</button>
+    </div>
+    <div class="grid justify-items-center">
+      <div>
+        <a href="#" class="logo inline">dinner party</a>
+        <img class="inline pb-7 pl-5" src="/public/assets/chair-icon.png"/>
+      </div class="mb-4">
+      <div class="flex-row">
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="profileNavBtn" href="#">profile</button>
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="#">parties</button>
+      </div>
+    </div>
+</nav>
+     <div class="dashboard">
+        {{#if loggedIn }}
+           <a href="/dashboard">Dashboard</a>
+        {{else}}
+           <a href="/login">Dashboard</a>
+          {{/if}}
+            </div>
+          {{#if loggedIn }}
+            <div class="logout">
+            <button id="logout" class="btnLogout">Logout</button>
+            </div>
+          {{else}}
+            <a href="/login">Login</a>
+                  {{/if}}
+            </div>
+            </div>
+                <div class="col-12">
+                  <h1 class="jumbo-tron">Dinner Party</h1>
+                  </div>
+              </div>
+       </div>
+  </nav>
+    </header>
+
+    <main>
+       {{{body}}} 
+    </main>
+{{#if loggedIn }}
+<script src="/javascript/logout.js"></script>
+{{/if}}
+</body>
 </html>

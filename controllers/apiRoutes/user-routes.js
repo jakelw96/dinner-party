@@ -81,13 +81,14 @@ router.post('/', (req, res) => {
     })
     .then(dbUserData => {
         // Session saving data will go here
-        req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.loggedIn = true;
+        // req.session.save(() => {
+        //     req.session.user_id = dbUserData.id;
+        //     req.session.username = dbUserData.username;
+        //     req.session.loggedIn = true;
 
-            res.json(dbUserData)
-        })
+        //     res.json(dbUserData)
+        // })
+        res.json(dbUserData);
     })
     .catch(err => {
         console.log(err);

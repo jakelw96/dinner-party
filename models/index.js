@@ -16,14 +16,22 @@ User.hasOne(Bio, {
 Bio.belongsTo(User, {
     foreignKey: 'user_id'
 });
-
-User.hasMany(Party, {
+User.belongsToMany(Party, {
+    through: UserParties,
     foreignKey: 'user_id'
+});
+
+Party.belongsToMany(User, {
+    through: UserParties,
+    foreignKey: 'party_id'
+});
+ User.hasMany(Party, {
+   foreignKey: 'user_id'
 });
 
 Party.belongsTo(User, {
-    foreignKey: 'user_id'
-});
+   foreignKey: 'user_id'
+ });
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -76,6 +84,7 @@ Interest.belongsToMany(Party, {
     through: PartyInterests,
     foreignKey: 'interest_id'
 });
+
 
 module.exports = { 
     User, 
