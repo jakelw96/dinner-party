@@ -69,6 +69,12 @@
     font-size: 16px;
 }
 
+.h1-large {
+    font-family: var(--h1-font-family);
+    color: var(--orange-dark);
+    font-size: 50px;
+}
+
 .h2 {
     font-family: var(--h2-font-family);
     color: var(--purple-2-dark);
@@ -76,6 +82,11 @@
 
 .p-text {
     color: var(--p-text);
+}
+
+.orange-text {
+    color: var(--orange-dark);
+    font-size: 16px;
 }
 
 /*USAGE- all data entry text areas*/
@@ -128,10 +139,6 @@
     visibility: visible;
     transition: opacity 0.5s;
   }
-
-.profile-avatar {
-    background-color: var(--background-medium);
-}
 
 .interest {
     background-image: linear-gradient(var(--purple-1-light), var(--purple-1-dark));
