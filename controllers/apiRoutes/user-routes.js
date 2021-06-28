@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const faker = require('faker');
 const { User, Bio, Party, Interest, UserInterests } = require('../../models');
 const isAuthenticate = require('../../utils/authenticate');
 
@@ -49,11 +50,18 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Generates random data using faker for user signup
+router.get('/random', (req, res) => {
+    let randomUsername = faker.internet.userName();
+    let randomPassword = faker.internet.password();
+
+    res.json(randomEmail, randomUsername, randomPassword)
+})
+
 // Creates a new user
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
-        email: req.body.email,
         password: req.body.password,
         interestIds: req.body.interestIds
     })
@@ -66,9 +74,10 @@ router.post('/', (req, res) => {
                 };
             })
             return UserInterests.bulkCreate(interestsTagsArr)
+        } else {
+            // If no interests
+            res.status(200).json(user)
         }
-        // If no interests
-        res.status(200).json(user)
     })
     .then(dbUserData => {
         // Session saving data will go here
