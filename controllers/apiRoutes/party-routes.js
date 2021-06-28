@@ -87,7 +87,7 @@ router.post('/',  (req,res) => {
             })
             return PartyInterests.bulkCreate(interestsTagsArr)
         }
-   
+    })
     .then(dbPartyData => {
       if (!dbPartyData) {
             res.status(404).json({message: "This party name already exists!"});

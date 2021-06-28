@@ -16,15 +16,7 @@ User.hasOne(Bio, {
 Bio.belongsTo(User, {
     foreignKey: 'user_id'
 });
-User.belongsToMany(Party, {
-    through: UserParties,
-    foreignKey: 'user_id'
-});
 
-Party.belongsToMany(User, {
-    through: UserParties,
-    foreignKey: 'party_id'
-});
  User.hasMany(Party, {
    foreignKey: 'user_id'
 });
