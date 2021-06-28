@@ -50,14 +50,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Generates random data using faker for user signup
-router.get('/random', (req, res) => {
-    let randomUsername = faker.internet.userName();
-    let randomPassword = faker.internet.password();
-
-    res.json(randomEmail, randomUsername, randomPassword)
-})
-
 // Creates a new user
 router.post('/', (req, res) => {
     User.create({
@@ -74,21 +66,24 @@ router.post('/', (req, res) => {
                 };
             })
             return UserInterests.bulkCreate(interestsTagsArr)
-        } else {
-            // If no interests
-            res.status(200).json(user)
         }
-    })
-    .then(dbUserData => {
-        // Session saving data will go here
+
         // req.session.save(() => {
         //     req.session.user_id = dbUserData.id;
         //     req.session.username = dbUserData.username;
         //     req.session.loggedIn = true;
-
-        //     res.json(dbUserData)
         // })
-        res.json(dbUserData);
+        // res.json(user) 
+    })
+    .then(dbUserData => {
+        // Session saving data will go here
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json(dbUserData)
+        })
     })
     .catch(err => {
         console.log(err);
@@ -142,7 +137,7 @@ router.put('/:id', isAuthenticate, (req, res) => {
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username
         }
     })
     .then(dbUserData => {
@@ -180,7 +175,7 @@ router.post('/logout', isAuthenticate, (req, res) => {
 });
 
 // Delete a user
-router.delete('/:id', isAuthenticate, (req, res) => {
+router.delete('/:id', (req, res) => {
     User.destroy({
         where: {
             id: req.params.id
