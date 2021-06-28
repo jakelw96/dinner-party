@@ -19,7 +19,7 @@
             </div>
             <div class="flex-row my-2">
                 <label for="password" class="pr-2">Password:</label>
-                <input type="password" id="password" name="password" placeholder="password" class="text-entry py-1 pl-3 rounded-lg">
+                <input type="password" id="signup-password" name="password" placeholder="password" class="text-entry py-1 pl-3 rounded-lg">
               </div>
               <input type="submit" value="Submit" class="button-main inline text-white my-3 px-16 py-1 mb-7 md:px-30 md:py-2 md:text-2xl rounded-lg" id="loginBtn">
         </form>
@@ -35,13 +35,16 @@
 </div>
 
     <div id="signup-interests" class="grid grid-cols-3 m-8 md:grid-cols-6">
-        <div id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
-          interest
-        </div>
-      </div>
+        {{#each interests as |interest|}}
+        <button id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
+          {{interest.id}} - {{interest.interest_name}}
+        </button>
+        {{/each}}
+    </div>
       <div class="grid flex-row justify-items-center">
-          <button class="button-main text-white my-3 px-16 py-1 mb-7 md:px-30 md:py-2 md:text-2xl rounded-lg">Complete</button>
+          <button id="signupBtn" class="button-main text-white my-3 px-16 py-1 mb-7 md:px-30 md:py-2 md:text-2xl rounded-lg">Complete</button>
         </div>
     </div>
 </div>
 </div>
+<script src="/javascript/login.js"></script>

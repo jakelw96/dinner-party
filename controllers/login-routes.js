@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Interest } = require('../models');
 
 router.get('/', (req, res) => {
     if (req.session.loggedIn) {
@@ -15,7 +16,20 @@ router.get('/signup', (req, res) => {
         return;
     }
 
-    res.render('signup');
+    Interest.findAll({
+        attributes: ['id', 'interest_name']
+    })
+    .then(dbInterestData => {
+        const interests = dbInterestData.map(interest => interest.get({ plain: true }));
+
+        res.render('signup', {
+            interests,
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;

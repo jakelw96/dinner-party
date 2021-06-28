@@ -3,10 +3,10 @@ const { User, Bio, Party, Post, Comment, Interest} = require('../models');
 const isAuth = require('../utils/authenticate');
 
 // Gets single users data
-router.get('/', isAuth, (req, res) => {
+router.get('/', (req, res) => {
     User.findOne({
         where: {
-            user_id: req.params.id
+            user_id: req.session.user_id
         },
         attributes: ['id', 'username'],
         include: [
@@ -56,7 +56,7 @@ router.get('/', isAuth, (req, res) => {
         const user = dbUserData.get({ plain: true });
         res.render('dashboard', {
             user,
-            loggedIn: req.session.loggedIn
+            loggedIn: true
         })
     })
     .catch(err => {
@@ -66,7 +66,7 @@ router.get('/', isAuth, (req, res) => {
 });
 
 // Get a single post 
-router.get('/post/:id', (req, res) => {
+router.get('/post/:id', isAuth, (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -97,7 +97,7 @@ router.get('/post/:id', (req, res) => {
 
         res.render('single-post', {
             post,
-            loggedIn: req.session.loggedIn
+            loggedIn: true
         });
     })
     .catch(err => {
