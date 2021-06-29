@@ -1,0 +1,19 @@
+<div class="group p-text grid justify-items-center">
+<div id="user-parties" class="div-bubble p-6 m-2 w-11/12 justify-items-left rounded-lg mb-10 group-hover:bg-gray-200">
+      <!-- Party name -->
+  <a href="dashboard/party/{{id}}" class="h2 text-2xl mb-2" id="party-name">{{party_name}}</a>
+      <!-- party interests -->
+    <div id="party-interests" class="grid grid-cols-3 mt-2 md:grid-cols-6 justify-start">
+      {{#each interests as |interest|}}
+      <div id="interest-element" class="interest rounded-lg px-8 mr-2 mb-2 border border-purple-900 col-auto">
+         {{interest_name}}
+      </div>
+      {{/each}}
+    </div>
+</div>
+      <!-- party info -->
+    <div class="py-2 p-text" id="party-info">{{party_bio}}</div>
+      <!-- amount of posts made to party -->
+    <div class="orange-text pt-2 text-align-left" id="posts-to-party">Posts: {{posts.length}} </div>
+</div>
+</div>

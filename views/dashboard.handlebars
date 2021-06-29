@@ -1,0 +1,56 @@
+<!--Profile-->
+<div class="settings items-end">
+    <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="settings" href="#">settings</button>
+</div>
+<h1 class="h1 grid justify-items-center" id="username">{{user.username}}</h1>
+
+<!--IF no bio-->
+<div class="grid justify-items-center"> 
+  <div id="user-bio" class="p-text div-bubble p-6 m-2 mb-4 w-11/12 rounded-lg grid justify-items-center">Write something about yourself! What should people know about you?
+    <button class="button-secondary inline text-white px-8 mt-5 rounded-lg" id="edit-bio" href="#">edit</button>
+{{!-- LOGIC TO EDIT BIO --}}
+  </div>
+</div>
+
+<!-- IF bio -->
+<div class="grid justify-items-center"> 
+    <div id="user-bio" class="p-text div-bubble p-6 m-2 mb-4 w-11/12 rounded-lg grid justify-items-center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id ratione officia aut rem cumque iste error. Laudantium laboriosam alias nihil voluptate maxime neque illum. Accusamus nostrum magni nisi obcaecati pariatur!.
+      <button class="button-secondary inline text-white px-8 mt-5 rounded-lg" id="edit-bio" href="#">edit</button>
+    </div>
+</div>
+
+<!--User interests-->
+<div id="user-interests" class="grid grid-cols-3 mx-8 md:grid-cols-6">
+  {{#each user.interests }}
+  <div id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
+    {{interest_name}}
+  </div>
+  {{/each}}
+</div>
+
+<!--Parties User is Hosting-->
+<h1 class="h1 mt-6 grid justify-items-center">Parties I'm Hosting</h1>
+
+<!--IF no Parties-->
+<div class="mb-10 grid justify-items-center"> 
+  <div id="user-friends" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
+    <div>
+      {{#if user.parties}}
+      {{#each user.parties as |parties|}}
+      {{> party parties }}
+      {{/each}}
+      {{else}}
+      <div class="logo">Uh-oh!</div>
+      <div class="p-text">It looks like you aren't hosting any parties. Create a new party to start a conversation!</div>
+      {{/if}}
+  </div>
+</div>
+
+<!-- Create a new party -->
+<a href="#" class="h1-large">+ Host a New Party</a>
+
+<!--Scripts-->
+    <link rel="stylesheet" href="/public/css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
+</html>

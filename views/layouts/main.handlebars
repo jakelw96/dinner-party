@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     
+     <!--Importing custom fonts-->
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+     <!--Tailwind CDN-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css" integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" />
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Dinner Party</title>
+</head>
+<body>
+    <header>
+<main class="flex-col flex-row">
+
+ <!--Logged in Nav-->
+<nav class = "nav-constant">
+{{#if loggedIn }}
+    <div class="logout items-end">
+        <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="logout" href="#">logout</button>
+    </div>
+{{/if}} 
+    <div class="grid justify-items-center">
+      <div>
+        <a href="#" class="logo inline">dinner party</a>
+        <img class="inline pb-7 pl-5" src="/assets/chair-icon.png"/>
+      </div class="mb-4">
+{{#if loggedIn }}     
+      <div class="flex-row">
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="profileNavBtn" href="#">profile</button>
+        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="#">parties</button>
+      </div>
+{{/if}}      
+    </div>
+</nav>
+
+  </header>
+    <main>
+       {{{body}}} 
+    </main>
+
+  <!--Footer-->
+<footer class="footer, p-4">
+    Dinner Party 2021 &copy; 
+  </footer>
+  </main>
+
+{{#if loggedIn }}
+<script src="/javascript/logout.js"></script>
+{{/if}}
+</body>
+</html>
