@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const faker = require('faker');
-const { User, Bio, Party, Interest, UserInterests, Post } = require('../../models');
+const { User, Bio, Party, Interest, UserInterests } = require('../../models');
 const isAuthenticate = require('../../utils/authenticate');
 
 // Get all users
