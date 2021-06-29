@@ -1,15 +1,19 @@
 async function newPostHandler(event) {
     event.preventDefault();
   
-    const post_name = document.querySelector('input[name="post-title"]').value;
-    const post_text = document.querySelector('textarea[name="post-text"]').value;
+    const post_name = document.querySelector('textarea[name="post-name"]').value;
+    const post_text = document.querySelector('textarea[name="post-content"]').value;
+    const party_id = window.location.toString().split('/')[
+      window.location.toString().split('/').length - 1
+    ];
     
   
     const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({
         post_name,
-        post_text
+        post_text,
+        party_id
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -17,12 +21,11 @@ async function newPostHandler(event) {
     });
   
     if (response.ok) {
-      document.location.replace('/dashboard');
+      console.log("Post created")
+      document.location.replace(`/dashboard/party/${party_id}`);
     } else {
       alert(response.statusText);
     }
 }
 
-// button should be created in parties html handlebar
-
-document.querySelector('.new-post-form').addEventListener('submit', newPostHandler);
+document.getElementById('submit').addEventListener('click', newPostHandler);

@@ -65,20 +65,14 @@ router.get('/:id', (req, res) => {
 });
 
 //Create a post
-router.post('/', isAuthenticate, (req,res) => {
+router.post('/', (req,res) => {
     Post.create({
         post_name: req.body.post_name,
-        post_text: req.body.post_text,
-        user_id: req.session.user_id,  // To be session later
-        party_id: req.body.party_id
+        post_text: req.body.post_text,  
+        party_id: req.body.party_id,
+        user_id: req.session.user_id,
     })
-    .then(dbPostData => {
-      if (!dbPostData) {
-            res.status(404).json({message: "This post name already exists!"});
-            return;
-        }
-        res.json(dbPostData)
-    })        
+    .then(dbPostData => res.json(dbPostData))        
     .catch(err => {
         console.log(err);
         res.status(500).json(err);

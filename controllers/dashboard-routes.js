@@ -121,12 +121,52 @@ router.get('/party/:id', (req, res) => {
     });
 });
 
+// Go to create a bio
+router.get('/bio', (req, res) => {
+    res.render('add-bio', {
+        loggedIn: true
+    })
+});
+
+// Go to edit a bio
+router.get('/bio/edit/:id', (req, res) => {
+    res.render('edit-bio', {
+        loggedIn: true
+    })
+});
+
+// Go to create party
+router.get('/party', (req, res) => {
+    Interest.findAll({
+        attributes: ['id', 'interest_name']
+    })
+    .then(dbInterestData => {
+        const interests = dbInterestData.map(interest => interest.get({ plain: true }));
+
+        res.render('new-party', {
+            interests,
+            loggedIn: true
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+});
+
+// Go to add a post
+router.get('/party/post/:party_id', (req, res) => {
+    res.render('add-post', {
+        loggedIn: true
+    })
+});
+
 
 // Get a single post 
-router.get('/party/post/:id',  (req, res) => {
+router.get('/party/post/see-post/:post_id',  (req, res) => {
     Post.findOne({
         where: {
-            id: req.params.id
+            id: req.params.post_id
         },
         attributes: ['id', 'post_name', 'post_text'],
         include: [

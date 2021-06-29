@@ -1,12 +1,15 @@
-async function createBio(event) {
+async function editBio(event) {
     event.preventDefault();
 
     const bio_text = document.querySelector('textarea[name="user-bio"]').value;
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
 
     console.log(bio_text)
 
-    const response = await fetch('/api/bios', {
-        method: 'post',
+    const response = await fetch(`/api/bios/${id}`, {
+        method: 'put',
         body: JSON.stringify({
            bio_text 
         }),
@@ -21,4 +24,4 @@ async function createBio(event) {
     }
 };
 
-document.getElementById('submit').addEventListener('click', createBio);
+document.getElementById('submit').addEventListener('click', editBio);

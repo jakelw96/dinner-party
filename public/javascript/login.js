@@ -1,5 +1,3 @@
-const interestArr = [];
-
 async function loginFormHandler(event) {
     event.preventDefault();
 
@@ -17,13 +15,14 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/homepage');
             console.log('Success! Logged in!')
         } else {
             alert(response.statusText);
         }
     }
 }
+const interestArr = [];
 
 // Clickable interests to add
 let allButtons = document.querySelectorAll('button[class^=interest]');
@@ -58,8 +57,8 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            console.log("User created successfully!")
-            document.location.replace('/dashboard');
+            document.location.replace('/homepage');
+            console.log("User created")
         } else {
             alert(response.statusText);
         }

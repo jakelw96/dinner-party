@@ -21,7 +21,10 @@
                 <label for="password" class="pr-2">Password:</label>
                 <input type="password" id="signup-password" name="password" placeholder="password" class="text-entry py-1 pl-3 rounded-lg">
               </div>
+              <input type="submit" value="Submit" class="button-main inline text-white my-3 px-16 py-1 mb-7 md:px-30 md:py-2 md:text-2xl rounded-lg" id="loginBtn">
+        </form>
     </div>
+
 <!-- Step 2 -->
 <div class="flex flex-row justify-items-start">
     <div class="button-secondary align-middle text-3xl font-extrabold rounded-full h-24 w-24 flex items-center justify-center">
@@ -34,7 +37,7 @@
 
     <div id="signup-interests" class="grid grid-cols-3 m-8 md:grid-cols-6">
         {{#each interests as |interest|}}
-        <button id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
+        <button class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
           {{interest.id}} - {{interest.interest_name}}
         </button>
         {{/each}}

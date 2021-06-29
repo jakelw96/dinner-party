@@ -27,17 +27,22 @@
     <div class="logout items-end">
         <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="logout" href="#">logout</button>
     </div>
-{{/if}} 
+
     <div class="grid justify-items-center">
+      <div>
+        <a href="/homepage" class="logo inline">dinner party</a>
+        <img class="inline pb-7 pl-5" src="/assets/chair-icon.png"/>
+      </div class="mb-4">
+      <div class="flex-row">
+        <a class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="/homepage">Home</a>
+        <a class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="/dashboard">Dashboard</a>
+      </div>
+{{else}}
+      <div class="grid justify-items-center">
       <div>
         <a href="#" class="logo inline">dinner party</a>
         <img class="inline pb-7 pl-5" src="/assets/chair-icon.png"/>
-      </div class="mb-4">
-{{#if loggedIn }}     
-      <div class="flex-row">
-        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="profileNavBtn" href="#">profile</button>
-        <button class="button-main inline text-white px-16 py-1 mb-7 mx-1 rounded-lg" id="exploreNavBtn" href="#">parties</button>
-      </div>
+      </div class="mb-4">      
 {{/if}}      
     </div>
 </nav>

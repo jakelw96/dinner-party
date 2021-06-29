@@ -6,10 +6,6 @@ const partyRoutes = require('./party-routes');
 const postRoutes = require('./post-routes');
 const commentRoutes = require('./comment-routes');
 const interestRoutes = require('./interests-routes');
-const fakeUserRoutes = require('./fake-user-routes');
-
-
-
 
 // Other api routes will be required here
 
@@ -19,7 +15,6 @@ router.use('/parties', partyRoutes);
 router.use('/posts', postRoutes);
 router.use('/comments', commentRoutes);
 router.use('/interests', interestRoutes);
-router.use('/fakeusers', fakeUserRoutes); 
 
 
 // Other api routes will be used here
