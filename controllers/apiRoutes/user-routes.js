@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const faker = require('faker');
-const { User, Bio, Party, Interest, UserInterests } = require('../../models');
+const { User, Bio, Party, Interest, UserInterests, Post } = require('../../models');
 const isAuthenticate = require('../../utils/authenticate');
 
 // Get all users
@@ -29,7 +29,17 @@ router.get('/:id', (req, res) => {
             },
             {
                 model: Party,
-                attributes: ['id', 'party_name']
+                attributes: ['id', 'party_name'],
+                include: [
+                    {
+                        model: Interest,
+                        attributes: ['id', 'interest_name']
+                    },
+                    {
+                        model: Post,
+                        attributes: ['id', 'post_name', 'post_text']
+                    }
+                ]
             },
             {
                 model: Interest,
@@ -64,7 +74,7 @@ router.post('/', (req, res) => {
             req.session.username = user.username;
             req.session.loggedIn = true;
 
-            // res.json(user)
+            res.json(user)
         })
         
         if (req.body.interestIds.length) {

@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
     })
     .then(dbPartyData => {
         const parties = dbPartyData.map(party => party.get({ plain: true }));
-        res.render('homepage', {
+        res.render('explore-parties', {
             parties,
             loggedIn: req.session.loggedIn
         });

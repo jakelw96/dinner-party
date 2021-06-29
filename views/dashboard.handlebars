@@ -35,14 +35,16 @@
 <div class="mb-10 grid justify-items-center"> 
   <div id="user-friends" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
     <div>
+      {{#if user.parties}}
+      {{#each user.parties as |parties|}}
+      {{> party parties }}
+      {{/each}}
+      {{else}}
       <div class="logo">Uh-oh!</div>
       <div class="p-text">It looks like you aren't hosting any parties. Create a new party to start a conversation!</div>
+      {{/if}}
   </div>
 </div>
-
-<!--IF Parties-->
-{{!-- USER PARTY LOGIC --}}
-{{!-- views/partials/party.handlebars --}}
 
 <!-- Create a new party -->
 <a href="#" class="h1-large">+ Host a New Party</a>
