@@ -1,0 +1,23 @@
+<!--IF Conversations-->
+
+{{#if party.post.length}}
+{{#each party.post as |post|}}
+
+{{> post-info post}}
+{{/each}} 
+{{else}}
+<div class="group p-text grid justify-items-center">
+<div id="party-conversations" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg mb-10 grid justify-items-left group-hover:bg-gray-200">
+      <!-- convo name -->
+  <a href="#" class="h2 text-2xl pb-2" id="conversation-name">Conversation Name</a>
+      <!-- convo info -->
+    <div class="py-2 p-text" id="conversation-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eveniet atque quasi ipsa, sunt possimus? Ratione, aut! Nostrum culpa at, quisquam eius sint saepe sunt dolore consequatur corrupti, officiis minus.</div>
+    
+    <!-- add to conversation -->
+    <button class="button-main inline text-white px-16 py-1 mb-2 mx-1 rounded-lg grid justify-items-center" id="join-convo-btn">Join the Conversation</button>
+    
+    <!-- amount of comments made to convo -->
+    <div class="orange-text pt-2 text-align-left" id="comments-on-post">Comments: </div>
+</div> 
+</div>
+{{/if}}
