@@ -3,6 +3,12 @@
 <!--All Parties-->
 <h1 class="h1 mt-2 grid justify-items-center">All Parties</h1>
 
+<!--IF Parties-->
+<!-- PARTY PARTIAL -->
+{{#if parties.length}}
+{{#each parties as |parties|}}
+{{> party parties}}
+{{else}}
 <!--IF no Parties-->
 <div class="mb-10 grid justify-items-center"> 
   <div id="user-friends" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
@@ -12,6 +18,5 @@
     </div>
   </div>
 </div>
+{{/if}}
 
-<!--IF Parties-->
-<!-- PARTY PARTIAL -->
