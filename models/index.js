@@ -6,7 +6,6 @@ const Comment = require('./Comment')
 const Interest = require('./Interest');
 const UserInterests = require('./UserInterests');
 const PartyInterests = require('./PartyInterests');
-const FakeUser = require('./FakeUser');
 
 
 // This is where we will associate the different models
