@@ -52,7 +52,7 @@ router.get('/:id', isAuthenticate, (req, res) => {
 router.post('/', isAuthenticate, (req, res) => {
     Bio.create({
         bio_text: req.body.bio_text,
-        user_id: req.body.user_id  // To be updated to reflect session instead
+        user_id: req.session.user_id  // To be updated to reflect session instead
     })
     .then(dbBioData => res.json(dbBioData))
     .catch(err => {

@@ -2,7 +2,7 @@
 <div class="settings items-end">
     <button class="button-secondary inline text-white px-8 mt-5 ml-5 rounded-lg" id="settings" href="#">settings</button>
 </div>
-<h1 class="h1 grid justify-items-center" id="username">@User</h1>
+<h1 class="h1 grid justify-items-center" id="username">{{user.username}}</h1>
 
 <!--IF no bio-->
 <div class="grid justify-items-center"> 
@@ -21,9 +21,11 @@
 
 <!--User interests-->
 <div id="user-interests" class="grid grid-cols-3 mx-8 md:grid-cols-6">
+  {{#each user.interests }}
   <div id="interest-element" class="interest rounded-lg px-8 mx-2 mb-2 border border-purple-900">
-    interest
+    {{interest_name}}
   </div>
+  {{/each}}
 </div>
 
 <!--Parties User is Hosting-->
@@ -33,14 +35,16 @@
 <div class="mb-10 grid justify-items-center"> 
   <div id="user-friends" class="p-text div-bubble p-6 m-2 w-11/12 rounded-lg">
     <div>
+      {{#if user.parties}}
+      {{#each user.parties as |parties|}}
+      {{> party parties }}
+      {{/each}}
+      {{else}}
       <div class="logo">Uh-oh!</div>
       <div class="p-text">It looks like you aren't hosting any parties. Create a new party to start a conversation!</div>
+      {{/if}}
   </div>
 </div>
-
-<!--IF Parties-->
-{{!-- USER PARTY LOGIC --}}
-{{!-- views/partials/party.handlebars --}}
 
 <!-- Create a new party -->
 <a href="#" class="h1-large">+ Host a New Party</a>
