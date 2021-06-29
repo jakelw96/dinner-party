@@ -22,3 +22,4 @@ async function createBio(event) {
 };
 
 document.getElementById('submit').addEventListener('click', createBio);
+
