@@ -1,6 +1,6 @@
 {
   "name": "friend-finder",
-  "version": "gi14.16.1",
+  "version": "14.16.1",
   "description": "",
   "main": "index.js",
   "scripts": {
