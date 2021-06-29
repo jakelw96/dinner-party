@@ -27,7 +27,7 @@ router.get('/', isAuthenticate, (req,res) => {
 });
 
 //Get a single comment
-router.get('/:id', isAuthenticate, (req,res) => {
+router.get('/:id', (req,res) => {
     Comment.findOne({
         where: {
             id: req.params.id
@@ -52,12 +52,12 @@ router.get('/:id', isAuthenticate, (req,res) => {
 });
 
 //Create a comment
-router.post('/', isAuthenticate, (req, res) => {
+router.post('/', (req, res) => {
     if (req.session) {
         Comment.create({
             comment_text: req.body.comment_text,
-            user_id: req.session.user_id, 
-            post_id: req.body.post_id
+            post_id: req.body.post_id,
+            user_id: req.session.user_id,
         })
         .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {

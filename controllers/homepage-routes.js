@@ -48,6 +48,7 @@ router.get('/', (req, res) => {
     });
 });
 
+
 // Get a single party
 router.get('/party/:id', (req, res) => {
     Party.findOne({

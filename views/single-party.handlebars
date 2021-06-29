@@ -14,7 +14,7 @@
 
 <!-- Start New Convo -->
 <div class="grid justify-items-center">
-    <button class="button-secondary text-white font-medium px-16 py-3 mt-2 mx-1 rounded-lg">+ Start a New Conversation</button>
+    <a href="/dashboard/party/post/{{party.id}}"class="button-secondary text-white font-medium px-16 py-3 mt-2 mx-1 rounded-lg">+ Start a New Conversation</a>
 
     <h1 class="h2 inline pt-4 pb-4 text-2xl">Hosted by: <span class="h1" id="username">@{{party.user.username}}</span></h1>
 </div>
@@ -30,8 +30,8 @@
 <h1 class="h1 mt-4 grid justify-items-center">Conversations</h1>
 
 <!--IF Conversations-->
-{{#if party.post.length}}
-{{#each party.post as |post|}}
+{{#if party.posts.length}}
+{{#each party.posts as |post|}}
 {{> post-info post}}
 {{/each}}
 {{else}}

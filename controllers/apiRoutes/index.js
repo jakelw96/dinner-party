@@ -8,9 +8,6 @@ const commentRoutes = require('./comment-routes');
 const interestRoutes = require('./interests-routes');
 
 
-
-
-
 // Other api routes will be required here
 
 router.use('/users', userRoutes);

@@ -70,12 +70,12 @@ router.get('/:id', (req,res) => {
 });
 
 //Create a party
-router.post('/',  (req,res) => {
+router.post('/',  (req, res) => {
     Party.create({
         party_name: req.body.party_name,
         party_bio: req.body.party_bio,
-        user_id: req.body.user_id,    // Will be session data later
-        interestIds: req.body.interestIds
+        interestIds: req.body.interestIds,
+        user_id: req.session.user_id
     })
     .then((party) => {
         if (req.body.interestIds.length) {
@@ -87,14 +87,9 @@ router.post('/',  (req,res) => {
             })
             return PartyInterests.bulkCreate(interestsTagsArr)
         }
+        res.status(200).json(party)
     })
-    .then(dbPartyData => {
-      if (!dbPartyData) {
-            res.status(404).json({message: "This party name already exists!"});
-            return;
-        }
-        res.json(dbPartyData)
-    })        
+    .then(dbPartyData => res.json(dbPartyData))        
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -143,7 +138,7 @@ router.put('/:id', (req, res) => {
 });
 
 //Delete a party
-router.delete('/:id', isAuthenticate, (req,res) => {
+router.delete('/:id', (req,res) => {
     Party.destroy({
         where: {
             id: req.params.id
